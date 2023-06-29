@@ -13,6 +13,7 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +40,7 @@ class _SignInPageState extends State<SignInPage> {
                     left: Resize.size(context) * 0.1,
                     right: Resize.size(context) * 0.1),
                 child: Container(
-                  height: MediaQuery.of(context).size.height * 0.5,
+                  height: MediaQuery.of(context).size.height * 0.44,
                   padding: EdgeInsets.only(
                       top: Resize.size(context) * 0.03,
                       bottom: Resize.size(context) * 0.05,
@@ -54,60 +55,96 @@ class _SignInPageState extends State<SignInPage> {
                   child: SingleChildScrollView(
                     child: Padding(
                       padding: EdgeInsets.all(Resize.size(context) * 0.02),
-                      child: Column(
-                        children: [
-                          Image.asset(
-                            'images/signin-signup_image/hello.png',
-                            width: Resize.size(context) * 0.3,
-                          ),
-                          SizedBox(
-                            height: Resize.size(context) * 0.01,
-                          ),
-                          Text(
-                            'Sign in to MIMO ',
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 2,
-                            style: TextStyle(
-                                fontSize: Resize.size(context) * 0.020,
-                                color: const Color(0xFF1C4D8C),
-                                wordSpacing: 2.0),
-                          ),
-                          SizedBox(
-                            height: Resize.size(context) * 0.02,
-                          ),
-                          CustomTextFiled(
-                            labelText: 'SĐT hoặc email',
-                            hintText: 'SĐT hoặc email',
-                            controller: Controller.phoneNumber,
-                          ),
-                          CustomTextFiled(
-                            obscureText: true,
-                            labelText: 'Mật khẩu ',
-                            hintText: 'Mật khẩu',
-                            controller: Controller.password,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const CircleAvatar(
-                                radius: 20,
-                                backgroundColor: AppColor.colorButton,
-                                child: Icon(
-                                  Icons.arrow_back_rounded,
-                                  color: Colors.white,
-                                ),
+                      child: Form(
+                        key: _formKey,
+                        child: Column(
+                          children: [
+                            Row(children: [
+                              Image.asset(
+                                'images/signin-signup_image/hello.png',
+                                width: Resize.size(context) * 0.3,
                               ),
-                              TextButton(
+                            ]),
+                            SizedBox(
+                              height: Resize.size(context) * 0.01,
+                            ),
+                            Text(
+                              'Sign in to MIMO ',
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                              style: TextStyle(
+                                  fontSize: Resize.size(context) * 0.025,
+                                  color: const Color(0xFF1C4D8C),
+                                  wordSpacing: 2.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              height: Resize.size(context) * 0.02,
+                            ),
+                            CustomTextFiled(
+                              validator: (value) => value!.isEmpty
+                                  ? 'Vui lòng nhập SĐT hoặc email'
+                                  : null,
+                              labelText: 'SĐT hoặc email',
+                              hintText: 'SĐT hoặc email',
+                              controller: Controller.phoneNumber,
+                            ),
+                            CustomTextFiled(
+                              obscureText: true,
+                              labelText: 'Mật khẩu ',
+                              hintText: 'Mật khẩu',
+                              controller: Controller.password,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                TextButton(
                                   onPressed: () {},
                                   child: Text(
-                                    'Đăng kí',
+                                    'Quên mật khẩu?',
                                     style: TextStyle(
-                                        fontSize: Resize.size(context) * 0.03,
-                                        color: AppColor.colorButton),
-                                  )),
-                            ],
-                          )
-                        ],
+                                      fontSize: Resize.size(context) * 0.03,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: Resize.size(context) * 0.02,
+                            ),
+                            const CustomButton(
+                              name: 'Đăng nhập',
+                              size: 0.5,
+                            ),
+                            SizedBox(
+                              height: Resize.size(context) * 0.02,
+                            ),
+                            Text(
+                              '-OR-',
+                              style: TextStyle(
+                                  fontSize: Resize.size(context) * 0.03),
+                              textAlign: TextAlign.center,
+                            ),
+                            SizedBox(
+                              height: Resize.size(context) * 0.02,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                    'images/signin-signup_image/logo-facebook.png',
+                                    width: Resize.size(context) * 0.06),
+                                SizedBox(
+                                  width: Resize.size(context) * 0.02,
+                                ),
+                                Image.asset(
+                                    'images/signin-signup_image/logo-google.png',
+                                    width: Resize.size(context) * 0.06),
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -118,5 +155,13 @@ class _SignInPageState extends State<SignInPage> {
         ),
       ),
     );
+  }
+}
+
+bool checkLogin(String phoneNumber, String password) {
+  if (phoneNumber.isEmpty && password.isEmpty) {
+    return true;
+  } else {
+    return false;
   }
 }
