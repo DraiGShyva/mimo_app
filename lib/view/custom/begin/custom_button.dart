@@ -6,11 +6,13 @@ class CustomButton extends StatefulWidget {
   final String? name;
   final double size;
   final String? routeName;
+  final Function? onPressed;
   const CustomButton({
     super.key,
     this.name,
     this.size = 1,
     this.routeName,
+    this.onPressed,
   });
 
   @override
@@ -31,27 +33,31 @@ class _CustomButtonState extends State<CustomButton> {
             boxShadow: const [
               BoxShadow(
                 blurRadius: 5,
-                color: Color.fromARGB(142, 0, 0, 0),
+                color: Color.fromARGB(142, 214, 212, 212),
                 offset: Offset(0, 5),
               ),
             ],
           ),
           child: InkWell(
             onTap: () {
+              if (widget.onPressed != null) {
+                widget.onPressed!();
+                return;
+              }
               Navigator.pushNamed(context, widget.routeName!);
             },
             borderRadius: BorderRadius.circular(100),
             child: Padding(
               padding: EdgeInsets.only(
-                left: Resize.size(context) * widget.size * 0.06,
-                right: Resize.size(context) * widget.size * 0.06,
-                top: Resize.size(context) * widget.size * 0.01,
-                bottom: Resize.size(context) * widget.size * 0.01,
+                left: Resize.size(context) * widget.size * 0.1,
+                right: Resize.size(context) * widget.size * 0.1,
+                top: Resize.size(context) * widget.size * 0.04,
+                bottom: Resize.size(context) * widget.size * 0.04,
               ),
               child: Text(
                 widget.name!,
                 style: TextStyle(
-                  fontSize: Resize.size(context) * widget.size * 0.04,
+                  fontSize: Resize.size(context) * widget.size * 0.05,
                   color: const Color.fromARGB(255, 0, 152, 198),
                   fontWeight: FontWeight.w700,
                 ),

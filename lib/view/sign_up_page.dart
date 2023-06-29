@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mimoapp/view/custom/begin/custom_button.dart';
 import 'package:mimoapp/view/custom/begin/custom_text_field.dart';
+// ignore: unused_import
 import 'package:mimoapp/view/resource/app_color.dart';
 import 'package:mimoapp/view/resource/login/text_field_controller.dart';
 import 'package:mimoapp/view/resource/resize.dart';
 
 class SignUpPage extends StatefulWidget {
+  static const String routeName = '/sign_up_page';
   const SignUpPage({Key? key}) : super(key: key);
 
   @override
@@ -115,7 +117,10 @@ class _SignUpPageState extends State<SignUpPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.of(context)
+                                      .pushNamed('/sign_in_page');
+                                },
                                 style: ElevatedButton.styleFrom(
                                   shape: const CircleBorder(),
                                   padding: EdgeInsets.all(
@@ -128,6 +133,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               ),
                               const CustomButton(
                                 name: 'Đăng kí',
+                                size: 0.5,
                               )
                             ],
                           ),

@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
           '/plash_time_page': (context) => const PlashTimePage(),
           '/begin_page': (context) => const BeginPage(),
           '/sign_in_page': (context) => const SignInPage(),
+          '/sign_up_page': (context) => const SignUpPage(),
         });
   }
 }

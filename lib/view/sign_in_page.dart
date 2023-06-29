@@ -82,12 +82,12 @@ class _SignInPageState extends State<SignInPage> {
                               height: Resize.size(context) * 0.02,
                             ),
                             CustomTextFiled(
-                              validator: (value) => value!.isEmpty
-                                  ? 'Vui lòng nhập SĐT hoặc email'
-                                  : null,
                               labelText: 'SĐT hoặc email',
                               hintText: 'SĐT hoặc email',
                               controller: Controller.phoneNumber,
+                            ),
+                            SizedBox(
+                              height: Resize.size(context) * 0.02,
                             ),
                             CustomTextFiled(
                               obscureText: true,
@@ -95,27 +95,40 @@ class _SignInPageState extends State<SignInPage> {
                               hintText: 'Mật khẩu',
                               controller: Controller.password,
                             ),
+                            SizedBox(
+                              height: Resize.size(context) * 0.02,
+                            ),
                             Row(
+                              // mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 TextButton(
                                   onPressed: () {},
+                                  style: ButtonStyle(
+                                    // bot khoảng trắng đầu text
+                                    padding: MaterialStateProperty.all<
+                                        EdgeInsetsGeometry>(EdgeInsets.zero),
+
+                                    // Loại bỏ khoảng trắng ở đầu
+                                  ),
                                   child: Text(
-                                    'Quên mật khẩu?',
+                                    'Quên mật khẩu? ',
                                     style: TextStyle(
                                       fontSize: Resize.size(context) * 0.03,
-                                      color: Colors.black,
+                                      color: const Color.fromARGB(
+                                          255, 2, 178, 253),
                                     ),
                                   ),
                                 ),
                               ],
                             ),
-                            SizedBox(
-                              height: Resize.size(context) * 0.02,
-                            ),
-                            const CustomButton(
+                            CustomButton(
                               name: 'Đăng nhập',
                               size: 0.5,
+                              onPressed: () {
+                                checkLogin(Controller.phoneNumber.text,
+                                    Controller.password.text, context);
+                              },
                             ),
                             SizedBox(
                               height: Resize.size(context) * 0.02,
@@ -136,13 +149,58 @@ class _SignInPageState extends State<SignInPage> {
                                     'images/signin-signup_image/logo-facebook.png',
                                     width: Resize.size(context) * 0.06),
                                 SizedBox(
-                                  width: Resize.size(context) * 0.02,
+                                  width: Resize.size(context) * 0.04,
                                 ),
                                 Image.asset(
                                     'images/signin-signup_image/logo-google.png',
                                     width: Resize.size(context) * 0.06),
                               ],
-                            )
+                            ),
+                            Row(
+                              // mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context)
+                                        .pushNamed('/sign_up_page');
+                                  },
+                                  style: ButtonStyle(
+                                    // bot khoảng trắng đầu text
+                                    padding: MaterialStateProperty.all<
+                                        EdgeInsetsGeometry>(EdgeInsets.zero),
+
+                                    // Loại bỏ khoảng trắng ở đầu
+                                  ),
+                                  child: RichText(
+                                    text: TextSpan(
+                                      text: 'Bạn chưa có tài khoản, ',
+                                      style: TextStyle(
+                                        fontSize: Resize.size(context) * 0.03,
+                                        color: Colors.black,
+                                      ),
+                                      children: <TextSpan>[
+                                        TextSpan(
+                                          text: 'Đăng kí?',
+                                          style: TextStyle(
+                                            fontSize:
+                                                Resize.size(context) * 0.03,
+                                            color: const Color.fromARGB(
+                                                255, 2, 178, 253),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    // 'Bạn chưa có tài khoản, Đăng kí?',
+                                    // style: TextStyle(
+                                    //   fontSize: Resize.size(context) * 0.03,
+                                    //   color: const Color.fromARGB(
+                                    //       255, 2, 178, 253),
+                                    // ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ],
                         ),
                       ),
@@ -158,10 +216,32 @@ class _SignInPageState extends State<SignInPage> {
   }
 }
 
-bool checkLogin(String phoneNumber, String password) {
-  if (phoneNumber.isEmpty && password.isEmpty) {
-    return true;
-  } else {
+bool checkLogin(String phoneNumber, String password, BuildContext context) {
+  if (phoneNumber.isEmpty || password.isEmpty) {
+    showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Thông báo'),
+          content: const Text(
+            'Vui lòng nhập đầy đủ thông tin ',
+          ),
+          actions: <Widget>[
+            TextButton(
+              style: TextButton.styleFrom(
+                textStyle: Theme.of(context).textTheme.labelLarge,
+              ),
+              child: const Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
     return false;
+  } else {
+    return true;
   }
 }
