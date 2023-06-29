@@ -59,13 +59,18 @@ class _SignUpPageState extends State<SignUpPage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Text(
-                                'ĐĂNG KÍ',
-                                style: TextStyle(
-                                  fontSize: Resize.size(context) * 0.06,
-                                  color: const Color(0xFF3F3D56),
-                                  fontWeight: FontWeight.bold,
-                                ),
+                              Image.asset(
+                                'images/signin-signup_image/hello.png',
+                                width: Resize.size(context) * 0.3,
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Image.asset(
+                                'images/signin-signup_image/Sign-up-logo.gif',
+                                width: Resize.size(context) * 0.15,
                               ),
                             ],
                           ),
@@ -73,7 +78,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             height: Resize.size(context) * 0.01,
                           ),
                           Text(
-                            'Đăng kí tài khoản mới và hưởng các tiện ích và ưu đãi đọc quyền trên ứng dụng MIMO ',
+                            'Đăng kí tài khoản MIMO ',
                             overflow: TextOverflow.ellipsis,
                             maxLines: 2,
                             style: TextStyle(
@@ -85,13 +90,13 @@ class _SignUpPageState extends State<SignUpPage> {
                             height: Resize.size(context) * 0.02,
                           ),
                           CustomTextFiled(
-                            labelText: 'Họ và tên',
+                            labelText: 'Họ và tên ',
                             hintText: 'Họ và tên',
                             controller: Controller.username,
                           ),
                           CustomTextFiled(
-                            labelText: 'SĐT ',
-                            hintText: 'SĐT',
+                            labelText: 'SĐT hoặc email ',
+                            hintText: 'SĐT hoặc email',
                             controller: Controller.phoneNumber,
                           ),
                           CustomTextFiled(
@@ -101,30 +106,33 @@ class _SignUpPageState extends State<SignUpPage> {
                             controller: Controller.password,
                           ),
                           CustomTextFiled(
+                            obscureText: true,
                             labelText: 'Xác nhận mật khẩu ',
-                            hintText: 'Xác  nhận mật khẩu',
+                            hintText: 'Xác nhận mật khẩu',
                             controller: Controller.confirmPassword,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const CircleAvatar(
-                                radius: 20,
-                                backgroundColor: AppColor.colorButton,
-                                child: Icon(
+                              ElevatedButton(
+                                onPressed: () {},
+                                style: ElevatedButton.styleFrom(
+                                  shape: const CircleBorder(),
+                                  padding: EdgeInsets.all(
+                                      Resize.size(context) * 0.035),
+                                ),
+                                child: const Icon(
                                   Icons.arrow_back_rounded,
                                   color: Colors.white,
                                 ),
                               ),
-                              TextButton(
-                                  onPressed: () {},
-                                  child: Text(
-                                    'Đăng kí',
-                                    style: TextStyle(
-                                        fontSize: Resize.size(context) * 0.03,
-                                        color: AppColor.colorButton),
-                                  )),
+                              const CustomButton(
+                                name: 'Đăng kí',
+                              )
                             ],
+                          ),
+                          SizedBox(
+                            height: Resize.size(context) * 0.05,
                           )
                         ],
                       ),
