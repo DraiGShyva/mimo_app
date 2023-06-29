@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mimoapp/view/custom/begin/custom_button.dart';
 import 'package:mimoapp/view/custom/begin/custom_text_field.dart';
 import 'package:mimoapp/view/resource/app_color.dart';
+import 'package:mimoapp/view/resource/login/text_field_controller.dart';
 import 'package:mimoapp/view/resource/resize.dart';
 
 class SignInPage extends StatefulWidget {
@@ -28,14 +29,22 @@ class _SignInPageState extends State<SignInPage> {
         ),
         child: Material(
           color: Colors.transparent,
-          child: IntrinsicHeight(
-            child: FractionallySizedBox(
-              alignment: Alignment.bottomCenter,
-              heightFactor: 0.7,
-              child: Padding(
-                padding: EdgeInsets.all(Resize.size(context) * 0.1),
+          child: Column(
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 2.8,
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                    left: Resize.size(context) * 0.1,
+                    right: Resize.size(context) * 0.1),
                 child: Container(
-                  padding: EdgeInsets.all(Resize.size(context) * 0.05),
+                  height: MediaQuery.of(context).size.height * 0.5,
+                  padding: EdgeInsets.only(
+                      top: Resize.size(context) * 0.03,
+                      bottom: Resize.size(context) * 0.05,
+                      left: Resize.size(context) * 0.05,
+                      right: Resize.size(context) * 0.05),
                   decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.all(
@@ -76,21 +85,15 @@ class _SignInPageState extends State<SignInPage> {
                             height: Resize.size(context) * 0.02,
                           ),
                           CustomTextFiled(
-                            labelText: 'Họ và tên',
-                            hintText: 'Họ và tên',
-                          ),
-                          CustomTextFiled(
-                            labelText: 'SĐT ',
-                            hintText: 'SĐT',
+                            labelText: 'SĐT hoặc email',
+                            hintText: 'SĐT hoặc email',
+                            controller: Controller.phoneNumber,
                           ),
                           CustomTextFiled(
                             obscureText: true,
                             labelText: 'Mật khẩu ',
                             hintText: 'Mật khẩu',
-                          ),
-                          CustomTextFiled(
-                            labelText: 'Xác nhận mật khẩu ',
-                            hintText: 'Xác  nhận mật khẩu',
+                            controller: Controller.password,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -105,10 +108,10 @@ class _SignInPageState extends State<SignInPage> {
                               ),
                               TextButton(
                                   onPressed: () {},
-                                  child: const Text(
+                                  child: Text(
                                     'Đăng kí',
                                     style: TextStyle(
-                                        fontSize: 20,
+                                        fontSize: Resize.size(context) * 0.03,
                                         color: AppColor.colorButton),
                                   )),
                             ],
@@ -119,7 +122,7 @@ class _SignInPageState extends State<SignInPage> {
                   ),
                 ),
               ),
-            ),
+            ],
           ),
         ),
       ),
