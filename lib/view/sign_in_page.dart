@@ -56,29 +56,20 @@ class _SignInPageState extends State<SignInPage> {
                       padding: EdgeInsets.all(Resize.size(context) * 0.02),
                       child: Column(
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                'ĐĂNG KÍ',
-                                style: TextStyle(
-                                  fontSize: Resize.size(context) * 0.06,
-                                  color: const Color(0xFF3F3D56),
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
+                          Image.asset(
+                            'images/signin-signup_image/hello.png',
+                            width: Resize.size(context) * 0.3,
                           ),
                           SizedBox(
                             height: Resize.size(context) * 0.01,
                           ),
                           Text(
-                            'Đăng kí tài khoản mới và hưởng các tiện ích và ưu đãi đọc quyền trên ứng dụng MIMO ',
+                            'Sign in to MIMO ',
                             overflow: TextOverflow.ellipsis,
                             maxLines: 2,
                             style: TextStyle(
-                                fontSize: Resize.size(context) * 0.035,
-                                color: Colors.black,
+                                fontSize: Resize.size(context) * 0.020,
+                                color: const Color(0xFF1C4D8C),
                                 wordSpacing: 2.0),
                           ),
                           SizedBox(
