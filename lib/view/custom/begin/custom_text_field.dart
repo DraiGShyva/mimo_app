@@ -13,7 +13,8 @@ class CustomTextFiled extends StatelessWidget {
       this.hintText,
       this.labelText,
       this.obscureText,
-      this.keyboardType});
+      this.keyboardType,
+      this.controller});
 
   @override
   Widget build(BuildContext context) {

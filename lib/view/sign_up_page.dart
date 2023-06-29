@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mimoapp/view/custom/begin/custom_button.dart';
 import 'package:mimoapp/view/custom/begin/custom_text_field.dart';
 import 'package:mimoapp/view/resource/app_color.dart';
+import 'package:mimoapp/view/resource/login/text_field_controller.dart';
 import 'package:mimoapp/view/resource/resize.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -36,8 +37,7 @@ class _SignUpPageState extends State<SignUpPage> {
               Padding(
                 padding: EdgeInsets.only(
                     left: Resize.size(context) * 0.1,
-                    right: Resize.size(context) * 0.1,
-                    bottom: Resize.size(context) * 0.15),
+                    right: Resize.size(context) * 0.1),
                 child: Container(
                   height: MediaQuery.of(context).size.height * 0.5,
                   padding: EdgeInsets.only(
@@ -87,19 +87,23 @@ class _SignUpPageState extends State<SignUpPage> {
                           CustomTextFiled(
                             labelText: 'Họ và tên',
                             hintText: 'Họ và tên',
+                            controller: Controller.username,
                           ),
                           CustomTextFiled(
                             labelText: 'SĐT ',
                             hintText: 'SĐT',
+                            controller: Controller.phoneNumber,
                           ),
                           CustomTextFiled(
                             obscureText: true,
                             labelText: 'Mật khẩu ',
                             hintText: 'Mật khẩu',
+                            controller: Controller.password,
                           ),
                           CustomTextFiled(
                             labelText: 'Xác nhận mật khẩu ',
                             hintText: 'Xác  nhận mật khẩu',
+                            controller: Controller.confirmPassword,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -114,10 +118,10 @@ class _SignUpPageState extends State<SignUpPage> {
                               ),
                               TextButton(
                                   onPressed: () {},
-                                  child: const Text(
+                                  child: Text(
                                     'Đăng kí',
                                     style: TextStyle(
-                                        fontSize: 20,
+                                        fontSize: Resize.size(context) * 0.03,
                                         color: AppColor.colorButton),
                                   )),
                             ],
