@@ -28,6 +28,7 @@ flutter:
     - assets/images/
     - assets/images/begin_image/
     - assets/images/plash_image/
+    - assets/images/signin-signup_image/
 
   fonts:
     - family: Caprasimo

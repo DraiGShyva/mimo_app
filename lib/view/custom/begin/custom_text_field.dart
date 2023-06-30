@@ -7,6 +7,7 @@ class CustomTextFiled extends StatelessWidget {
   String? labelText;
   TextInputType? keyboardType;
   bool? obscureText = false;
+  final Function? validator;
 
   TextEditingController? controller;
   CustomTextFiled({
@@ -16,6 +17,7 @@ class CustomTextFiled extends StatelessWidget {
     this.obscureText,
     this.keyboardType,
     this.controller,
+    this.validator,
   });
 
   @override
@@ -23,6 +25,7 @@ class CustomTextFiled extends StatelessWidget {
     return Column(
       children: [
         TextFormField(
+          validator: validator as String? Function(String?)?,
           controller: controller,
           keyboardType: keyboardType ?? TextInputType.text,
           obscureText: obscureText ?? false,

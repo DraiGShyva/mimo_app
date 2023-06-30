@@ -15,6 +15,8 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +27,7 @@ class _SignUpPageState extends State<SignUpPage> {
           color: Color.fromARGB(255, 235, 241, 255),
           image: DecorationImage(
             image:
-                AssetImage('images/signin-signup_image/background-login.gif'),
+                AssetImage('assets/images/signin-signup_image/background-login.gif'),
             fit: BoxFit.contain,
           ),
         ),
@@ -56,91 +58,126 @@ class _SignUpPageState extends State<SignUpPage> {
                   child: SingleChildScrollView(
                     child: Padding(
                       padding: EdgeInsets.all(Resize.size(context) * 0.02),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                'images/signin-signup_image/hello.png',
-                                width: Resize.size(context) * 0.3,
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Image.asset(
-                                'images/signin-signup_image/Sign-up-logo.gif',
-                                width: Resize.size(context) * 0.15,
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: Resize.size(context) * 0.01,
-                          ),
-                          Text(
-                            'Đăng kí tài khoản MIMO ',
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 2,
-                            style: TextStyle(
-                                fontSize: Resize.size(context) * 0.035,
-                                color: Colors.black,
-                                wordSpacing: 2.0),
-                          ),
-                          SizedBox(
-                            height: Resize.size(context) * 0.02,
-                          ),
-                          CustomTextFiled(
-                            labelText: 'Họ và tên ',
-                            hintText: 'Họ và tên',
-                            controller: Controller.username,
-                          ),
-                          CustomTextFiled(
-                            labelText: 'SĐT hoặc email ',
-                            hintText: 'SĐT hoặc email',
-                            controller: Controller.phoneNumber,
-                          ),
-                          CustomTextFiled(
-                            obscureText: true,
-                            labelText: 'Mật khẩu ',
-                            hintText: 'Mật khẩu',
-                            controller: Controller.password,
-                          ),
-                          CustomTextFiled(
-                            obscureText: true,
-                            labelText: 'Xác nhận mật khẩu ',
-                            hintText: 'Xác nhận mật khẩu',
-                            controller: Controller.confirmPassword,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              ElevatedButton(
-                                onPressed: () {
-                                  Navigator.of(context)
-                                      .pushNamed('/sign_in_page');
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  shape: const CircleBorder(),
-                                  padding: EdgeInsets.all(
-                                      Resize.size(context) * 0.035),
+                      child: Form(
+                        key: _formKey,
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Image.asset(
+                                  'assets/images/signin-signup_image/hello.png',
+                                  width: Resize.size(context) * 0.3,
                                 ),
-                                child: const Icon(
-                                  Icons.arrow_back_rounded,
-                                  color: Colors.white,
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Image.asset(
+                                  'assets/images/signin-signup_image/Sign-up-logo.gif',
+                                  width: Resize.size(context) * 0.15,
                                 ),
-                              ),
-                              const CustomButton(
-                                name: 'Đăng kí',
-                                size: 0.5,
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            height: Resize.size(context) * 0.05,
-                          )
-                        ],
+                              ],
+                            ),
+                            SizedBox(
+                              height: Resize.size(context) * 0.01,
+                            ),
+                            Text(
+                              'Đăng kí tài khoản MIMO ',
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                              style: TextStyle(
+                                  fontSize: Resize.size(context) * 0.035,
+                                  color: Colors.black,
+                                  wordSpacing: 2.0),
+                            ),
+                            SizedBox(
+                              height: Resize.size(context) * 0.02,
+                            ),
+                            CustomTextFiled(
+                              labelText: 'Họ và tên ',
+                              hintText: 'Họ và tên',
+                              controller: Controller.username,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Vui lòng nhập họ và tên';
+                                }
+                                return null;
+                              },
+                            ),
+                            CustomTextFiled(
+                              labelText: 'SĐT hoặc email ',
+                              hintText: 'SĐT hoặc email',
+                              controller: Controller.phoneNumber,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Vui lòng nhập SĐT hoặc email';
+                                }
+                                return null;
+                              },
+                            ),
+                            CustomTextFiled(
+                              obscureText: true,
+                              labelText: 'Mật khẩu ',
+                              hintText: 'Mật khẩu',
+                              controller: Controller.password,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Vui lòng nhập mật khẩu';
+                                }
+                                return null;
+                              },
+                            ),
+                            CustomTextFiled(
+                              obscureText: true,
+                              labelText: 'Xác nhận mật khẩu ',
+                              hintText: 'Xác nhận mật khẩu',
+                              controller: Controller.confirmPassword,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Vui lòng xác nhận mật khẩu';
+                                }
+                                return null;
+                              },
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.of(context)
+                                        .pushNamed('/sign_in_page');
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    shape: const CircleBorder(),
+                                    padding: EdgeInsets.all(
+                                        Resize.size(context) * 0.035),
+                                  ),
+                                  child: const Icon(
+                                    Icons.arrow_back_rounded,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                CustomButton(
+                                  name: 'Đăng kí',
+                                  size: 0.5,
+                                  onPressed: () {
+                                    if (_formKey.currentState != null &&
+                                        _formKey.currentState!.validate()) {
+                                      //_formKey.currentState!.save();
+                                      // Perform form submission or other actions
+                                      // when all input fields are valid
+                                    }
+                                  },
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              height: Resize.size(context) * 0.05,
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),

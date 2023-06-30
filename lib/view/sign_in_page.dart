@@ -23,8 +23,8 @@ class _SignInPageState extends State<SignInPage> {
         decoration: const BoxDecoration(
           color: Color.fromARGB(255, 235, 241, 255),
           image: DecorationImage(
-            image:
-                AssetImage('images/signin-signup_image/background-login.gif'),
+            image: AssetImage(
+                'assets/images/signin-signup_image/background-login.gif'),
             fit: BoxFit.contain,
           ),
         ),
@@ -61,7 +61,7 @@ class _SignInPageState extends State<SignInPage> {
                           children: [
                             Row(children: [
                               Image.asset(
-                                'images/signin-signup_image/hello.png',
+                                'assets/images/signin-signup_image/hello.png',
                                 width: Resize.size(context) * 0.3,
                               ),
                             ]),
@@ -87,16 +87,13 @@ class _SignInPageState extends State<SignInPage> {
                               controller: Controller.phoneNumber,
                             ),
                             SizedBox(
-                              height: Resize.size(context) * 0.02,
+                              height: Resize.size(context) * 0.01,
                             ),
                             CustomTextFiled(
                               obscureText: true,
                               labelText: 'Mật khẩu ',
                               hintText: 'Mật khẩu',
                               controller: Controller.password,
-                            ),
-                            SizedBox(
-                              height: Resize.size(context) * 0.02,
                             ),
                             Row(
                               // mainAxisSize: MainAxisSize.min,
@@ -146,13 +143,13 @@ class _SignInPageState extends State<SignInPage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Image.asset(
-                                    'images/signin-signup_image/logo-facebook.png',
+                                    'assets/images/signin-signup_image/logo-facebook.png',
                                     width: Resize.size(context) * 0.06),
                                 SizedBox(
                                   width: Resize.size(context) * 0.04,
                                 ),
                                 Image.asset(
-                                    'images/signin-signup_image/logo-google.png',
+                                    'assets/images/signin-signup_image/logo-google.png',
                                     width: Resize.size(context) * 0.06),
                               ],
                             ),

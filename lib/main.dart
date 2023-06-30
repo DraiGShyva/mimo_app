@@ -4,6 +4,7 @@ import 'package:mimoapp/view/custom/begin/custom_text_field.dart';
 import 'package:mimoapp/view/plash_time_page.dart';
 import 'package:mimoapp/view/sign_up_page.dart';
 import 'package:mimoapp/view/sign_in_page.dart';
+import 'package:mimoapp/view/test.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,8 +21,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        //home: const SignUpPage(),
-        home: const SignInPage(),
+        home: const SignUpPage(),
+        // home: const Test(),
         routes: {
           '/plash_time_page': (context) => const PlashTimePage(),
           '/begin_page': (context) => const BeginPage(),
