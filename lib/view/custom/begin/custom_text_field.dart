@@ -30,6 +30,10 @@ class CustomTextFiled extends StatelessWidget {
           keyboardType: keyboardType ?? TextInputType.text,
           obscureText: obscureText ?? false,
           decoration: InputDecoration(
+            contentPadding: EdgeInsets.symmetric(
+              vertical: Resize.size(context) * 0.02,
+              horizontal: Resize.size(context) * 0.02,
+            ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(5),
               borderSide: const BorderSide(
