@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const SignUpPage(),
+        home: const BeginPage(),
         // home: const Test(),
         routes: {
           '/plash_time_page': (context) => const PlashTimePage(),

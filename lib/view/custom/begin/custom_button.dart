@@ -44,7 +44,7 @@ class _CustomButtonState extends State<CustomButton> {
                 widget.onPressed!();
                 return;
               }
-              Navigator.pushNamed(context, widget.routeName!);
+              Navigator.pushReplacementNamed(context, widget.routeName!); // 
             },
             borderRadius: BorderRadius.circular(100),
             child: Padding(

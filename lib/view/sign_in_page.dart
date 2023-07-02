@@ -109,13 +109,15 @@ class _SignInPageState extends State<SignInPage> {
                                         padding: MaterialStateProperty.all<
                                                 EdgeInsetsGeometry>(
                                             EdgeInsets.zero),
+                                        visualDensity: VisualDensity.compact,
 
                                         // Loại bỏ khoảng trắng ở đầu
                                       ),
                                       child: Text(
                                         'Quên mật khẩu? ',
                                         style: TextStyle(
-                                          fontSize: Resize.size(context) * 0.03,
+                                          fontSize:
+                                              Resize.size(context) * 0.025,
                                           color: const Color.fromARGB(
                                               255, 2, 178, 253),
                                         ),
@@ -158,46 +160,71 @@ class _SignInPageState extends State<SignInPage> {
                                   ],
                                 ),
                                 Row(
-                                  // mainAxisSize: MainAxisSize.min,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
+                                    Text(
+                                      'Bạn chưa có tài khoản,',
+                                      style: TextStyle(
+                                          fontSize:
+                                              Resize.size(context) * 0.025),
+                                    ),
                                     TextButton(
                                       onPressed: () {
+                                        Controller.clearController();
                                         Navigator.of(context)
                                             .pushNamed('/sign_up_page');
                                       },
-                                      style: ButtonStyle(
-                                        // bot khoảng trắng đầu text
-                                        padding: MaterialStateProperty.all<
-                                                EdgeInsetsGeometry>(
-                                            EdgeInsets.zero),
-
-                                        // Loại bỏ khoảng trắng ở đầu
-                                      ),
-                                      child: RichText(
-                                        text: TextSpan(
-                                          text: 'Bạn chưa có tài khoản, ',
+                                      child: Text('Đăng kí?',
                                           style: TextStyle(
                                             fontSize:
-                                                Resize.size(context) * 0.03,
-                                            color: Colors.black,
-                                          ),
-                                          children: <TextSpan>[
-                                            TextSpan(
-                                              text: 'Đăng kí?',
-                                              style: TextStyle(
-                                                fontSize:
-                                                    Resize.size(context) * 0.03,
-                                                color: const Color.fromARGB(
-                                                    255, 2, 178, 253),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
+                                                Resize.size(context) * 0.027,
+                                            color: const Color.fromARGB(
+                                                255, 2, 178, 253),
+                                          )),
                                     ),
                                   ],
-                                ),
+                                )
+                                // Row(
+                                //   // mainAxisSize: MainAxisSize.min,
+                                //   mainAxisAlignment: MainAxisAlignment.center,
+                                //   children: [
+                                //     TextButton(
+                                //       onPressed: () {
+                                //         Navigator.of(context)
+                                //             .pushNamed('/sign_up_page');
+                                //       },
+                                //       style: ButtonStyle(
+                                //         // bot khoảng trắng đầu text
+                                //         padding: MaterialStateProperty.all<
+                                //                 EdgeInsetsGeometry>(
+                                //             EdgeInsets.zero),
+
+                                //         // Loại bỏ khoảng trắng ở đầu
+                                //       ),
+                                //       child: RichText(
+                                //         text: TextSpan(
+                                //           text: 'Bạn chưa có tài khoản, ',
+                                //           style: TextStyle(
+                                //             fontSize:
+                                //                 Resize.size(context) * 0.03,
+                                //             color: Colors.black,
+                                //           ),
+                                //           children: <TextSpan>[
+                                //             TextSpan(
+                                //               text: 'Đăng kí?',
+                                //               style: TextStyle(
+                                //                 fontSize:
+                                //                     Resize.size(context) * 0.03,
+                                //                 color: const Color.fromARGB(
+                                //                     255, 2, 178, 253),
+                                //               ),
+                                //             ),
+                                //           ],
+                                //         ),
+                                //       ),
+                                //     ),
+                                //   ],
+                                // ),
                               ],
                             ),
                           ),
@@ -224,6 +251,7 @@ bool checkLogin(String phoneNumber, String password, BuildContext context) {
           title: const Text('Thông báo'),
           content: const Text(
             'Vui lòng nhập đầy đủ thông tin ',
+            textAlign: TextAlign.center,
           ),
           actions: <Widget>[
             TextButton(
