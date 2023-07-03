@@ -61,14 +61,14 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
         letIndexChange: (index) => true,
       ),
       body: Container(
-        color: Color.fromARGB(255, 225, 225, 230),
+        color: const Color.fromARGB(255, 225, 225, 230),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(_page.toString(), textScaleFactor: 10.0),
               ElevatedButton(
-                child: Text('Go To Page of index 1'),
+                child: const Text('Go To Page of index 1'),
                 onPressed: () {
                   final CurvedNavigationBarState? navBarState =
                       _bottomNavigationKey.currentState;
