@@ -48,11 +48,11 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
             color: _page == index ? _iconColors[index] : Colors.grey,
           );
         }).toList(),
-        color: Color.fromARGB(255, 237, 236, 236),
+        color: const Color.fromARGB(255, 237, 236, 236),
         buttonBackgroundColor: Colors.white,
-        backgroundColor: Color.fromARGB(0, 199, 10, 10),
+        backgroundColor: const Color.fromARGB(0, 199, 10, 10),
         animationCurve: Curves.easeInOut,
-        animationDuration: Duration(milliseconds: 600),
+        animationDuration: const Duration(milliseconds: 600),
         onTap: (index) {
           setState(() {
             _page = index;
