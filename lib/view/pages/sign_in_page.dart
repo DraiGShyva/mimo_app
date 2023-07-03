@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mimoapp/view/custom/begin/custom_button.dart';
 import 'package:mimoapp/view/custom/begin/custom_text_field.dart';
-import 'package:mimoapp/view/resource/app_color.dart';
 import 'package:mimoapp/view/resource/login/text_field_controller.dart';
 import 'package:mimoapp/view/resource/resize.dart';
 

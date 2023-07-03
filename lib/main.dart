@@ -1,10 +1,10 @@
+import 'package:bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:mimoapp/view/begin_page.dart';
-import 'package:mimoapp/view/custom/begin/custom_text_field.dart';
-import 'package:mimoapp/view/plash_time_page.dart';
-import 'package:mimoapp/view/sign_up_page.dart';
-import 'package:mimoapp/view/sign_in_page.dart';
-import 'package:mimoapp/view/test.dart';
+import 'package:mimoapp/view/pages/begin_page.dart';
+import 'package:mimoapp/view/pages/bottom_nav_bar.dart';
+import 'package:mimoapp/view/pages/plash_time_page.dart';
+import 'package:mimoapp/view/pages/sign_in_page.dart';
+import 'package:mimoapp/view/pages/sign_up_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const BeginPage(),
+        home: BottomNavBarPage(),
         // home: const Test(),
         routes: {
           '/plash_time_page': (context) => const PlashTimePage(),

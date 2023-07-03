@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mimoapp/view/resource/app_color.dart';
 import 'package:mimoapp/view/resource/resize.dart';
 
 class CustomButton extends StatefulWidget {
