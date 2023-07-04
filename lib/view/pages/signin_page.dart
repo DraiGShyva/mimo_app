@@ -45,6 +45,12 @@ class _SignInPageState extends State<SignInPage> {
                         left: Resize.size(context) * 0.02,
                         right: Resize.size(context) * 0.02),
                     decoration: const BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black,
+                          
+                        )
+                      ],
                       color: Colors.white,
                       borderRadius: BorderRadius.all(
                         Radius.circular(20),

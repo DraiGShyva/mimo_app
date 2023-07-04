@@ -16,17 +16,20 @@ class MyApp extends StatelessWidget {
     fadePageRoute(Widget page) => PageRouteBuilder(
           pageBuilder: (context, animation, secondaryAnimation) => page,
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return FadeTransition(
-              opacity: animation,
+            return SlideTransition(
+              position: Tween<Offset>(
+                begin: const Offset(1.0, 0.0),
+                end: Offset.zero,
+              ).animate(animation),
               child: child,
             );
           },
-          transitionDuration: const Duration(milliseconds: 400),
+          // transitionDuration: const Duration(milliseconds: 400),
         );
 
     return MaterialApp(
       title: 'MIMO FOOD & DRINK',
-      debugShowCheckedModeBanner: true,
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
