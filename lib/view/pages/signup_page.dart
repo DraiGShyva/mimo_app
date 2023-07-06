@@ -116,7 +116,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   CustomTextFiled(
                                     labelText: 'SĐT hoặc email ',
                                     hintText: 'SĐT hoặc email',
-                                    controller: Controller.phoneNumber,
+                                    controller: Controller.email_or_phone,
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
                                         return 'Vui lòng nhập SĐT hoặc email';
@@ -176,83 +176,193 @@ class _SignUpPageState extends State<SignUpPage> {
                                         ),
                                       ),
                                       CustomButton(
-                                        name: 'Đăng kí',
-                                        size: 0.5,
-                                        onPressed: () async {
-                                          if (_formKey.currentState != null &&
-                                              _formKey.currentState!
-                                                  .validate()) {
-                                            // ignore: no_leading_underscores_for_local_identifiers
-                                            bool _isCheckLogin =
-                                                await SignUpModel().signUp(
-                                                    Controller.username.text,
-                                                    Controller.password.text,
-                                                    Controller
-                                                        .phoneNumber.text);
-                                            if (_isCheckLogin) {
-                                              Navigator.of(context)
-                                                  .pushNamedAndRemoveUntil(
-                                                      '/sign_in_page',
-                                                      (route) => false);
-                                              ScaffoldMessenger.of(context)
-                                                  .showSnackBar(
-                                                const SnackBar(
-                                                  content: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Icon(
-                                                        Icons
-                                                            .check_circle_outline_rounded,
-                                                        color: Colors.green,
-                                                      ),
-                                                      SizedBox(
-                                                        width: 10,
-                                                      ),
-                                                      Text(
-                                                        'Đăng kí thành công ',
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              );
-                                            } else {
-                                              showDialog<void>(
-                                                context: context,
-                                                builder:
-                                                    (BuildContext context) {
-                                                  return AlertDialog(
-                                                    title: const Icon(
-                                                        Icons
-                                                            .error_outline_rounded,
-                                                        color: Colors.red),
-                                                    content: const Text(
-                                                      'Đăng kí thất bại ',
-                                                    ),
-                                                    actions: <Widget>[
-                                                      TextButton(
-                                                        style: TextButton
-                                                            .styleFrom(
-                                                          textStyle:
-                                                              Theme.of(context)
-                                                                  .textTheme
-                                                                  .labelLarge,
+                                          name: 'Đăng kí',
+                                          size: 0.5,
+                                          onPressed: () async {
+                                            if (_formKey.currentState != null &&
+                                                _formKey.currentState!
+                                                    .validate()) {
+                                              // ignore: no_leading_underscores_for_local_identifiers
+                                              String _isCheckLogin =
+                                                  await SignUpModel().signUp(
+                                                      Controller.username.text,
+                                                      Controller.password.text,
+                                                      Controller
+                                                          .email_or_phone.text);
+                                              if (_isCheckLogin == "5") {
+                                                Navigator.of(context)
+                                                    .pushNamedAndRemoveUntil(
+                                                        '/sign_in_page',
+                                                        (route) => false);
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                  const SnackBar(
+                                                    content: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Icon(
+                                                          Icons
+                                                              .check_circle_outline_rounded,
+                                                          color: Colors.green,
                                                         ),
-                                                        child: const Text('OK'),
-                                                        onPressed: () {
-                                                          Navigator.of(context)
-                                                              .pop();
-                                                        },
+                                                        SizedBox(
+                                                          width: 10,
+                                                        ),
+                                                        Text(
+                                                          'Đăng kí thành công ',
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                );
+                                              } else {
+                                                if (_isCheckLogin == "1") {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    const SnackBar(
+                                                      content: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Icon(
+                                                            Icons
+                                                                .check_circle_outline_rounded,
+                                                            color: Colors.green,
+                                                          ),
+                                                          SizedBox(
+                                                            width: 10,
+                                                          ),
+                                                          Text(
+                                                            'SĐT hoặc email dẫ tồn tại ',
+                                                          ),
+                                                        ],
                                                       ),
-                                                    ],
+                                                    ),
                                                   );
-                                                },
-                                              );
+                                                  return 'SĐT hoặc email dẫ tồn tại';
+                                                }
+                                                // email đã tồn tại
+                                                if (_isCheckLogin == "2") {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    const SnackBar(
+                                                      content: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Icon(
+                                                            Icons
+                                                                .check_circle_outline_rounded,
+                                                            color: Colors.green,
+                                                          ),
+                                                          SizedBox(
+                                                            width: 10,
+                                                          ),
+                                                          Text(
+                                                            'Email không hợp lệ',
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  );
+                                                  return 'Email không hợp lệ';
+                                                }
+                                                if (_isCheckLogin == "3") {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    const SnackBar(
+                                                      content: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Icon(
+                                                            Icons
+                                                                .check_circle_outline_rounded,
+                                                            color: Colors.green,
+                                                          ),
+                                                          SizedBox(
+                                                            width: 10,
+                                                          ),
+                                                          Text(
+                                                            'SĐT không không tồn tại',
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  );
+                                                  return 'SĐT không không tồn tại';
+                                                }
+
+                                                if (_isCheckLogin == "4") {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    const SnackBar(
+                                                      content: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Icon(
+                                                            Icons
+                                                                .check_circle_outline_rounded,
+                                                            color: Colors.green,
+                                                          ),
+                                                          SizedBox(
+                                                            width: 10,
+                                                          ),
+                                                          Text(
+                                                            'SĐT không hợp lệ',
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  );
+                                                  return 'SĐT không hợp lệ';
+                                                }
+                                              }
                                             }
                                           }
-                                        },
-                                      )
+
+                                          // showDialog<void>(
+                                          //   context: context,
+                                          //   builder:
+                                          //       (BuildContext context) {
+                                          //     return AlertDialog(
+                                          //       title: const Icon(
+                                          //           Icons
+                                          //               .error_outline_rounded,
+                                          //           color: Colors.red),
+                                          //       content: const Text(
+                                          //         'Đăng kí thất bại ',
+                                          //       ),
+                                          //       actions: <Widget>[
+                                          //         TextButton(
+                                          //           style: TextButton
+                                          //               .styleFrom(
+                                          //             textStyle:
+                                          //                 Theme.of(context)
+                                          //                     .textTheme
+                                          //                     .labelLarge,
+                                          //           ),
+                                          //           child: const Text('OK'),
+                                          //           onPressed: () {
+                                          //             Navigator.of(context)
+                                          //                 .pop();
+                                          //           },
+                                          //         ),
+                                          //       ],
+                                          //     );
+                                          //   },
+                                          // );
+                                          //  }
+                                          //}
+                                          //},
+                                          )
                                     ],
                                   ),
                                   SizedBox(
