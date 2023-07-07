@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:mimoapp/view/pages/home_page.dart';
 import 'package:mimoapp/view/resource/app_color.dart';
 
 void main() => runApp(const MaterialApp(home: BottomNavBarPage()));
@@ -32,6 +33,14 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
     Colors.purple,
   ];
 
+  final List<dynamic> _pages = [
+    const HomePage(),
+    const HomePage(),
+    const HomePage(),
+    const HomePage(),
+    const HomePage(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +61,7 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
         buttonBackgroundColor: Colors.white,
         backgroundColor: const Color.fromARGB(0, 199, 10, 10),
         animationCurve: Curves.easeInOut,
-        animationDuration: const Duration(milliseconds: 600),
+        animationDuration: const Duration(milliseconds: 300),
         onTap: (index) {
           setState(() {
             _page = index;
@@ -60,25 +69,7 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
         },
         letIndexChange: (index) => true,
       ),
-      body: Container(
-        color: const Color.fromARGB(255, 225, 225, 230),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(_page.toString(), textScaleFactor: 10.0),
-              ElevatedButton(
-                child: const Text('Go To Page of index 1'),
-                onPressed: () {
-                  final CurvedNavigationBarState? navBarState =
-                      _bottomNavigationKey.currentState;
-                  navBarState?.setPage(1);
-                },
-              )
-            ],
-          ),
-        ),
-      ),
+      body: _pages[_page],
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mimoapp/view/pages/begin_page.dart';
+import 'package:mimoapp/view/pages/bottom_nav_bar.dart';
 import 'package:mimoapp/view/pages/plash_time_page.dart';
 import 'package:mimoapp/view/pages/signin_page.dart';
 import 'package:mimoapp/view/pages/signup_page.dart';
@@ -33,8 +34,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const PlashTimePage(),
-      // home: const Test(),
+      home: const BottomNavBarPage(),
       // routes: {
       //   '/plash_time_page': (context) => const PlashTimePage(),
       //   '/begin_page': (context) => const BeginPage(),
