@@ -1,4 +1,7 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
+import 'package:mimoapp/model/singin_model.dart';
 import 'package:mimoapp/view/custom/begin/custom_button.dart';
 import 'package:mimoapp/view/custom/begin/custom_text_field.dart';
 import 'package:mimoapp/view/resource/login/text_field_controller.dart';
@@ -48,7 +51,6 @@ class _SignInPageState extends State<SignInPage> {
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black,
-                          
                         )
                       ],
                       color: Colors.white,
@@ -92,7 +94,7 @@ class _SignInPageState extends State<SignInPage> {
                                 CustomTextFiled(
                                   labelText: 'SĐT hoặc email',
                                   hintText: 'SĐT hoặc email',
-                                  controller: Controller.phoneNumber,
+                                  controller: Controller.email_or_phone,
                                 ),
                                 SizedBox(
                                   height: Resize.size(context) * 0.01,
@@ -133,9 +135,50 @@ class _SignInPageState extends State<SignInPage> {
                                 CustomButton(
                                   name: 'Đăng nhập',
                                   size: 0.5,
-                                  onPressed: () {
-                                    checkLogin(Controller.phoneNumber.text,
-                                        Controller.password.text, context);
+                                  onPressed: () async {
+                                    bool checkSignUp = checkLogin(
+                                        Controller.email_or_phone.text,
+                                        Controller.password.text,
+                                        context);
+                                    if (checkSignUp) {
+                                      bool checkSignInAPI = await SignInModel()
+                                          .signIn(
+                                              Controller.email_or_phone.text,
+                                              Controller.password.text);
+                                      if (checkSignInAPI) {
+                                        print('Đăng nhập thành công');
+                                        Navigator.of(context)
+                                            .pushNamed('/begin_page');
+                                      } else {
+                                        print('Đăng nhập thất bại');
+                                        showDialog<void>(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return AlertDialog(
+                                              title: const Text('Thông báo'),
+                                              content: const Text(
+                                                'Mật khẩu hoặc SDT-Email không đúng ',
+                                                textAlign: TextAlign.center,
+                                              ),
+                                              actions: <Widget>[
+                                                TextButton(
+                                                  style: TextButton.styleFrom(
+                                                    textStyle: Theme.of(context)
+                                                        .textTheme
+                                                        .labelLarge,
+                                                  ),
+                                                  child: const Text('OK'),
+                                                  onPressed: () {
+                                                    Navigator.of(context).pop();
+                                                  },
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                      }
+                                      //Navigator.of(context).pushNamed('/home_page');
+                                    }
                                   },
                                 ),
                                 SizedBox(
