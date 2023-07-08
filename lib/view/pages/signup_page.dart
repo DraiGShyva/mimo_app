@@ -116,7 +116,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   CustomTextFiled(
                                     labelText: 'SĐT hoặc email ',
                                     hintText: 'SĐT hoặc email',
-                                    controller: Controller.email_or_phone,
+                                    controller: Controller.emailOrPhone,
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
                                         return 'Vui lòng nhập SĐT hoặc email';
@@ -188,7 +188,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                                       Controller.username.text,
                                                       Controller.password.text,
                                                       Controller
-                                                          .email_or_phone.text);
+                                                          .emailOrPhone.text);
                                               if (_isCheckLogin == "5") {
                                                 Navigator.of(context)
                                                     .pushNamedAndRemoveUntil(

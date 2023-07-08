@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:mimoapp/view/resource/resize.dart';
+import 'package:mimoapp/view/resource/text_style.dart';
 
-class ItemList extends StatefulWidget {
+class ItemListHorizontal extends StatelessWidget {
   final String? name;
   final List<Map<String, dynamic>>? data;
-  const ItemList({
+  const ItemListHorizontal({
     super.key,
     this.name,
     this.data,
   });
 
-  @override
-  State<ItemList> createState() => _ItemListState();
-}
-
-class _ItemListState extends State<ItemList> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -24,43 +20,40 @@ class _ItemListState extends State<ItemList> {
           onTap: () {
             // TODO hành động khi ấn vào tiêu đề
           },
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(
-                  left: Resize.size(context) * 0.03,
-                  right: Resize.size(context) * 0.03,
-                  top: Resize.size(context) * 0.01,
-                ),
-                child: Text(
-                  widget.name ?? '',
-                  style: TextStyle(
-                      fontSize: Resize.size(context) * 0.05,
-                      fontWeight: FontWeight.bold),
-                  overflow: TextOverflow.ellipsis,
+          child: Padding(
+            padding: EdgeInsets.only(
+              left: Resize.size(context) * 0.03,
+              right: Resize.size(context) * 0.03,
+              top: Resize.size(context) * 0.01,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  name ?? '',
+                  style: TextStyleClass().textStyleLarge(context),
                   maxLines: 1,
                 ),
-              ),
-              const Icon(
-                Icons.arrow_forward_ios,
-              ),
-            ],
+                const Icon(
+                  Icons.arrow_forward_ios,
+                ),
+              ],
+            ),
           ),
         ),
         SizedBox(
           height: Resize.size(context) * 0.03,
         ),
         SizedBox(
-          height: Resize.size(context) / 1.8,
+          height: Resize.size(context) / 2.1,
           width: MediaQuery.of(context).size.width,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: widget.data!.length < 9 ? widget.data!.length : 9,
+            itemCount: data!.length < 9 ? data!.length : 9,
             itemBuilder: (BuildContext context, int index) {
-              String image = widget.data?[index]['logo'] ?? '';
-              String name = widget.data?[index]['name'] ?? '';
-              String price = widget.data?[index]['price'] ?? '';
+              String image = data?[index]['logo'] ?? '';
+              String name = data?[index]['name'] ?? '';
+              String price = data?[index]['price'] ?? '';
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: InkWell(
@@ -98,7 +91,7 @@ class _ItemListState extends State<ItemList> {
                               fit: BoxFit.cover,
                             ),
                           ),
-                          height: Resize.size(context) / 3,
+                          height: Resize.size(context) / 3.5,
                           width: Resize.size(context) / 2,
                         ),
                         SizedBox(
@@ -106,12 +99,15 @@ class _ItemListState extends State<ItemList> {
                         ),
                         Text(
                           name,
-                          style: TextStyle(
-                              fontSize: Resize.size(context) * 0.045,
-                              fontWeight: FontWeight.bold),
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
+                          style: TextStyleClass().textStyleMedium(context),
                         ),
+                        //   style: TextStyle(
+                        //     TextSty
+                        //   //     fontSize: Resize.size(context) * 0.045,
+                        //   //     fontWeight: FontWeight.bold),
+                        //   // overflow: TextOverflow.ellipsis,
+                        //   // maxLines: 1,
+                        // ),
                         const Divider(
                           height: 0.001,
                         ),
@@ -128,20 +124,16 @@ class _ItemListState extends State<ItemList> {
                               ),
                               Text(
                                 price,
-                                style: TextStyle(
-                                  fontSize: Resize.size(context) * 0.045,
-                                ),
-                                overflow: TextOverflow.ellipsis,
+                                style:
+                                    TextStyleClass(fontWeight: FontWeight.bold)
+                                        .textStyleMedium(context),
                                 maxLines: 1,
                               ),
                               const Spacer(),
                               Text(
                                 '4.5',
-                                style: TextStyle(
-                                  fontSize: Resize.size(context) * 0.045,
-                                ),
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 1,
+                                style:
+                                    TextStyleClass().textStyleMedium(context),
                               ),
                               SizedBox(
                                 width: Resize.size(context) * 0.01,

@@ -29,7 +29,9 @@ class SignUpModel {
         }, // Đặt header 'Content-Type' là 'application/json'
       );
       final dataAPI = jsonDecode(response.body);
-      print(dataAPI['code']);
+      if (kDebugMode) {
+        print(dataAPI['code']);
+      }
 
       return dataAPI['code'];
     } catch (e) {

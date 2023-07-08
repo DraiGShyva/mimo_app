@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mimoapp/model/singin_model.dart';
 import 'package:mimoapp/view/custom/begin/custom_button.dart';
@@ -94,7 +95,7 @@ class _SignInPageState extends State<SignInPage> {
                                 CustomTextFiled(
                                   labelText: 'SĐT hoặc email',
                                   hintText: 'SĐT hoặc email',
-                                  controller: Controller.email_or_phone,
+                                  controller: Controller.emailOrPhone,
                                 ),
                                 SizedBox(
                                   height: Resize.size(context) * 0.01,
@@ -137,20 +138,23 @@ class _SignInPageState extends State<SignInPage> {
                                   size: 0.5,
                                   onPressed: () async {
                                     bool checkSignUp = checkLogin(
-                                        Controller.email_or_phone.text,
+                                        Controller.emailOrPhone.text,
                                         Controller.password.text,
                                         context);
                                     if (checkSignUp) {
                                       bool checkSignInAPI = await SignInModel()
-                                          .signIn(
-                                              Controller.email_or_phone.text,
+                                          .signIn(Controller.emailOrPhone.text,
                                               Controller.password.text);
                                       if (checkSignInAPI) {
-                                        print('Đăng nhập thành công');
+                                        if (kDebugMode) {
+                                          print('Đăng nhập thành công');
+                                        }
                                         Navigator.of(context)
                                             .pushNamed('/begin_page');
                                       } else {
-                                        print('Đăng nhập thất bại');
+                                        if (kDebugMode) {
+                                          print('Đăng nhập thất bại');
+                                        }
                                         showDialog<void>(
                                           context: context,
                                           builder: (BuildContext context) {

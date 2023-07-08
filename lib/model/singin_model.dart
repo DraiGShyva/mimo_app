@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 class SignInModel {
@@ -21,7 +22,9 @@ class SignInModel {
       }
       return false;
     } catch (e) {
-      print('Đăng nhập thất bại: $e');
+      if (kDebugMode) {
+        print('Đăng nhập thất bại: $e');
+      }
       //return false;
     }
     return false;
