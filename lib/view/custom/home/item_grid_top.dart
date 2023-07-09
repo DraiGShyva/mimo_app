@@ -67,8 +67,7 @@ class ItemGridViewTop extends StatelessWidget {
                             ],
                           ),
                           Expanded(
-                            child: Image.network(
-                                'assets/images/home_image/model-trangchu.png'),
+                            child: Image.asset(image),
                           ),
                         ],
                       ),
