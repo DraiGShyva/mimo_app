@@ -10,6 +10,8 @@ class CustomTextFiled extends StatefulWidget {
   final Function? validator;
   final Function? onChanged;
   TextEditingController? controller;
+  bool hiddenPassword;
+
   CustomTextFiled({
     super.key,
     this.hintText,
@@ -19,24 +21,22 @@ class CustomTextFiled extends StatefulWidget {
     this.controller,
     this.validator,
     this.onChanged,
-  });
+  }) : hiddenPassword = isPassword ?? false;
 
   @override
   State<CustomTextFiled> createState() => _CustomTextFiledState();
 }
 
 class _CustomTextFiledState extends State<CustomTextFiled> {
-  // bool hiddenPassword = false;
   @override
   Widget build(BuildContext context) {
-    bool hiddenPassword = widget.isPassword ?? false;
     return Column(
       children: [
         TextFormField(
           validator: widget.validator as String? Function(String?)?,
           onChanged: widget.onChanged as void Function(String)?,
           controller: widget.controller,
-          obscureText: hiddenPassword,
+          obscureText: widget.hiddenPassword,
           keyboardType: widget.keyboardType ?? TextInputType.text,
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(
@@ -74,16 +74,15 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
             suffixIcon: widget.isPassword ?? false
                 ? IconButton(
                     onPressed: () {
-                      print(hiddenPassword);
                       setState(() {
-                        hiddenPassword = !hiddenPassword;
-                        print(hiddenPassword);
+                        widget.hiddenPassword = !widget.hiddenPassword;
                       });
                     },
                     icon: Icon(
-                      hiddenPassword ? Icons.visibility_off : Icons.visibility,
-                      // Icons.visibility,
-                      color: Colors.black,
+                      widget.hiddenPassword
+                          ? Icons.visibility_off
+                          : Icons.visibility,
+                      size: Resize.size(context) * 0.06,
                     ),
                   )
                 : null,
