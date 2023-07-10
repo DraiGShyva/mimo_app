@@ -101,7 +101,7 @@ class _SignInPageState extends State<SignInPage> {
                                   height: Resize.size(context) * 0.01,
                                 ),
                                 CustomTextFiled(
-                                  obscureText: true,
+                                  isPassword: true,
                                   labelText: 'Mật khẩu ',
                                   hintText: 'Mật khẩu',
                                   controller: Controller.password,

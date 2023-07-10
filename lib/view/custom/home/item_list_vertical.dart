@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mimoapp/model/home_model.dart';
 
 import '../../resource/resize.dart';
 import '../../resource/text_style.dart';
@@ -18,6 +19,7 @@ class ItemListVertical extends StatelessWidget {
           children: [
             InkWell(
               onTap: () {
+                HomeModel().getHomeData();
                 // TODO hành động khi ấn vào tiêu đề
               },
               child: Text(
@@ -29,11 +31,9 @@ class ItemListVertical extends StatelessWidget {
           ],
         ),
         SizedBox(
-          height: Resize.size(context) * 0.03,
-        ),
-        SizedBox(
           height: Resize.size(context) / 2.7 * itemCount,
           child: ListView.builder(
+            padding: EdgeInsets.zero,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: itemCount.toInt(),
             itemBuilder: (BuildContext context, int index) {

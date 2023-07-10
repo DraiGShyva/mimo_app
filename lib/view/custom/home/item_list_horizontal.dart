@@ -42,9 +42,6 @@ class ItemListHorizontal extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: Resize.size(context) * 0.03,
-        ),
-        SizedBox(
           height: Resize.size(context) / 2.1,
           width: MediaQuery.of(context).size.width,
           child: ListView.builder(
@@ -65,12 +62,6 @@ class ItemListHorizontal extends StatelessWidget {
                       border: Border.all(
                           color: const Color.fromARGB(255, 203, 202, 202)),
                       borderRadius: BorderRadius.circular(5),
-                      // boxShadow: const [
-                      //   BoxShadow(
-                      //     blurRadius: 5,
-                      //     color: Colors.blue,
-                      //   )
-                      //],
                     ),
                     width: Resize.size(context) / 2,
                     child: Column(
@@ -101,13 +92,6 @@ class ItemListHorizontal extends StatelessWidget {
                           name,
                           style: TextStyleClass().textStyleMedium(context),
                         ),
-                        //   style: TextStyle(
-                        //     TextSty
-                        //   //     fontSize: Resize.size(context) * 0.045,
-                        //   //     fontWeight: FontWeight.bold),
-                        //   // overflow: TextOverflow.ellipsis,
-                        //   // maxLines: 1,
-                        // ),
                         const Divider(
                           height: 0.001,
                         ),

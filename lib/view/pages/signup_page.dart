@@ -125,7 +125,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                     },
                                   ),
                                   CustomTextFiled(
-                                    obscureText: true,
+                                    isPassword: true,
                                     labelText: 'Mật khẩu ',
                                     hintText: 'Mật khẩu',
                                     controller: Controller.password,
@@ -137,7 +137,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                     },
                                   ),
                                   CustomTextFiled(
-                                    obscureText: true,
+                                    isPassword: true,
                                     labelText: 'Xác nhận mật khẩu ',
                                     hintText: 'Xác nhận mật khẩu',
                                     controller: Controller.confirmPassword,

@@ -2,20 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:mimoapp/view/resource/resize.dart';
 
 // ignore: must_be_immutable
-class CustomTextFiled extends StatelessWidget {
+class CustomTextFiled extends StatefulWidget {
   String? hintText;
   String? labelText;
   TextInputType? keyboardType;
-  bool? obscureText = false;
+  bool? isPassword = false;
   final Function? validator;
   final Function? onChanged;
-
   TextEditingController? controller;
   CustomTextFiled({
     super.key,
     this.hintText,
+    this.isPassword,
     this.labelText,
-    this.obscureText,
     this.keyboardType,
     this.controller,
     this.validator,
@@ -23,15 +22,22 @@ class CustomTextFiled extends StatelessWidget {
   });
 
   @override
+  State<CustomTextFiled> createState() => _CustomTextFiledState();
+}
+
+class _CustomTextFiledState extends State<CustomTextFiled> {
+  // bool hiddenPassword = false;
+  @override
   Widget build(BuildContext context) {
+    bool hiddenPassword = widget.isPassword ?? false;
     return Column(
       children: [
         TextFormField(
-          validator: validator as String? Function(String?)?,
-          onChanged: onChanged as void Function(String)?,
-          controller: controller,
-          keyboardType: keyboardType ?? TextInputType.text,
-          obscureText: obscureText ?? false,
+          validator: widget.validator as String? Function(String?)?,
+          onChanged: widget.onChanged as void Function(String)?,
+          controller: widget.controller,
+          obscureText: hiddenPassword,
+          keyboardType: widget.keyboardType ?? TextInputType.text,
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(
               vertical: Resize.size(context) * 0.02,
@@ -48,7 +54,7 @@ class CustomTextFiled extends StatelessWidget {
               child: Row(
                 children: [
                   Text(
-                    labelText!,
+                    widget.labelText ?? '',
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: Resize.size(context) * 0.03,
@@ -64,7 +70,23 @@ class CustomTextFiled extends StatelessWidget {
                 ],
               ),
             ),
-            hintText: hintText,
+            hintText: widget.hintText,
+            suffixIcon: widget.isPassword ?? false
+                ? IconButton(
+                    onPressed: () {
+                      print(hiddenPassword);
+                      setState(() {
+                        hiddenPassword = !hiddenPassword;
+                        print(hiddenPassword);
+                      });
+                    },
+                    icon: Icon(
+                      hiddenPassword ? Icons.visibility_off : Icons.visibility,
+                      // Icons.visibility,
+                      color: Colors.black,
+                    ),
+                  )
+                : null,
             hintStyle: TextStyle(
               fontSize: Resize.size(context) * 0.03,
             ),
