@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mimoapp/model/singin_model.dart';
@@ -17,6 +15,69 @@ class SignInPage extends StatefulWidget {
 
 class _SignInPageState extends State<SignInPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  bool checkLogin() {
+    if (Controller.emailOrPhone.text.isEmpty ||
+        Controller.password.text.isEmpty) {
+      showDialog<void>(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Thông báo'),
+            content: const Text(
+              'Vui lòng nhập đầy đủ thông tin ',
+              textAlign: TextAlign.center,
+            ),
+            actions: <Widget>[
+              TextButton(
+                style: TextButton.styleFrom(
+                  textStyle: Theme.of(context).textTheme.labelLarge,
+                ),
+                child: const Text('OK'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  signInSuccess() {
+    return Navigator.of(context).pushNamed('/begin_page');
+  }
+
+  signInFailed() {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Thông báo'),
+          content: const Text(
+            'Mật khẩu hoặc SDT-Email không đúng ',
+            textAlign: TextAlign.center,
+          ),
+          actions: <Widget>[
+            TextButton(
+              style: TextButton.styleFrom(
+                textStyle: Theme.of(context).textTheme.labelLarge,
+              ),
+              child: const Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,7 +124,6 @@ class _SignInPageState extends State<SignInPage> {
                       child: SingleChildScrollView(
                         child: Padding(
                           padding: EdgeInsets.only(
-                              // top: Resize.size(context) * 0.02,
                               right: Resize.size(context) * 0.02,
                               left: Resize.size(context) * 0.02),
                           child: Form(
@@ -107,19 +167,15 @@ class _SignInPageState extends State<SignInPage> {
                                   controller: Controller.password,
                                 ),
                                 Row(
-                                  // mainAxisSize: MainAxisSize.min,
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
                                     TextButton(
                                       onPressed: () {},
                                       style: ButtonStyle(
-                                        // bot khoảng trắng đầu text
                                         padding: MaterialStateProperty.all<
                                                 EdgeInsetsGeometry>(
                                             EdgeInsets.zero),
                                         visualDensity: VisualDensity.compact,
-
-                                        // Loại bỏ khoảng trắng ở đầu
                                       ),
                                       child: Text(
                                         'Quên mật khẩu? ',
@@ -137,51 +193,22 @@ class _SignInPageState extends State<SignInPage> {
                                   name: 'Đăng nhập',
                                   size: 0.5,
                                   onPressed: () async {
-                                    bool checkSignUp = checkLogin(
-                                        Controller.emailOrPhone.text,
-                                        Controller.password.text,
-                                        context);
-                                    if (checkSignUp) {
-                                      bool checkSignInAPI = await SignInModel()
-                                          .signIn(Controller.emailOrPhone.text,
+                                    if (checkLogin()) {
+                                      dynamic checkSignInAPI =
+                                          await SignInModel().signIn(
+                                              Controller.emailOrPhone.text,
                                               Controller.password.text);
                                       if (checkSignInAPI) {
                                         if (kDebugMode) {
                                           print('Đăng nhập thành công');
                                         }
-                                        Navigator.of(context)
-                                            .pushNamed('/begin_page');
+                                        signInSuccess();
                                       } else {
                                         if (kDebugMode) {
                                           print('Đăng nhập thất bại');
                                         }
-                                        showDialog<void>(
-                                          context: context,
-                                          builder: (BuildContext context) {
-                                            return AlertDialog(
-                                              title: const Text('Thông báo'),
-                                              content: const Text(
-                                                'Mật khẩu hoặc SDT-Email không đúng ',
-                                                textAlign: TextAlign.center,
-                                              ),
-                                              actions: <Widget>[
-                                                TextButton(
-                                                  style: TextButton.styleFrom(
-                                                    textStyle: Theme.of(context)
-                                                        .textTheme
-                                                        .labelLarge,
-                                                  ),
-                                                  child: const Text('OK'),
-                                                  onPressed: () {
-                                                    Navigator.of(context).pop();
-                                                  },
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        );
+                                        signInFailed();
                                       }
-                                      //Navigator.of(context).pushNamed('/home_page');
                                     }
                                   },
                                 ),
@@ -236,47 +263,6 @@ class _SignInPageState extends State<SignInPage> {
                                     ),
                                   ],
                                 )
-                                // Row(
-                                //   // mainAxisSize: MainAxisSize.min,
-                                //   mainAxisAlignment: MainAxisAlignment.center,
-                                //   children: [
-                                //     TextButton(
-                                //       onPressed: () {
-                                //         Navigator.of(context)
-                                //             .pushNamed('/sign_up_page');
-                                //       },
-                                //       style: ButtonStyle(
-                                //         // bot khoảng trắng đầu text
-                                //         padding: MaterialStateProperty.all<
-                                //                 EdgeInsetsGeometry>(
-                                //             EdgeInsets.zero),
-
-                                //         // Loại bỏ khoảng trắng ở đầu
-                                //       ),
-                                //       child: RichText(
-                                //         text: TextSpan(
-                                //           text: 'Bạn chưa có tài khoản, ',
-                                //           style: TextStyle(
-                                //             fontSize:
-                                //                 Resize.size(context) * 0.03,
-                                //             color: Colors.black,
-                                //           ),
-                                //           children: <TextSpan>[
-                                //             TextSpan(
-                                //               text: 'Đăng kí?',
-                                //               style: TextStyle(
-                                //                 fontSize:
-                                //                     Resize.size(context) * 0.03,
-                                //                 color: const Color.fromARGB(
-                                //                     255, 2, 178, 253),
-                                //               ),
-                                //             ),
-                                //           ],
-                                //         ),
-                                //       ),
-                                //     ),
-                                //   ],
-                                // ),
                               ],
                             ),
                           ),
@@ -291,36 +277,5 @@ class _SignInPageState extends State<SignInPage> {
         ),
       ),
     );
-  }
-}
-
-bool checkLogin(String phoneNumber, String password, BuildContext context) {
-  if (phoneNumber.isEmpty || password.isEmpty) {
-    showDialog<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Thông báo'),
-          content: const Text(
-            'Vui lòng nhập đầy đủ thông tin ',
-            textAlign: TextAlign.center,
-          ),
-          actions: <Widget>[
-            TextButton(
-              style: TextButton.styleFrom(
-                textStyle: Theme.of(context).textTheme.labelLarge,
-              ),
-              child: const Text('OK'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-    return false;
-  } else {
-    return true;
   }
 }
