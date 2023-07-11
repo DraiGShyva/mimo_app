@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 class HomeModel {
   Future<String> getHomeData() async {
-    final url = Uri.parse('http://34.29.205.142/api/get-product');
+    final url = Uri.parse('http://173.255.114.207/api/get-product');
     final respones = await http.get(url);
     final data = jsonDecode(respones.body);
     if (respones.statusCode == 200) {

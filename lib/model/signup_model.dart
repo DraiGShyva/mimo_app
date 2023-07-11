@@ -8,7 +8,7 @@ class SignUpModel {
     String password,
     String phone,
   ) async {
-    final url = Uri.parse('http://34.29.205.142:80/api/create-user');
+    final url = Uri.parse('http://173.255.114.207:80/api/create-user');
     if (kDebugMode) {
       print(username);
     }

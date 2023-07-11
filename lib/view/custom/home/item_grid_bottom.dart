@@ -3,7 +3,7 @@ import 'package:mimoapp/view/resource/resize.dart';
 import 'package:mimoapp/view/resource/text_style.dart';
 
 class ItemGridViewBottom extends StatelessWidget {
-  final List<Map<String, dynamic>>? data;
+  final List<dynamic>? data;
   final String? name;
   const ItemGridViewBottom({super.key, this.data, this.name});
 
@@ -41,9 +41,12 @@ class ItemGridViewBottom extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: itemCount.toInt(),
             itemBuilder: (BuildContext context, int index) {
-              String image = data?[index]['logo'] ?? '';
-              String name = data?[index]['name'] ?? '';
-              String description = data?[index]['description'] ?? '';
+               String image = data?[index]['product_images'] ?? '';
+
+              String name = data?[index]['product_name'] ?? '';
+            
+              String description =
+                data?[index]['product_description'] ?? '';
               String price = data?[index]['price'] ?? '';
               return Padding(
                 padding: EdgeInsets.only(

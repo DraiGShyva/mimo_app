@@ -4,7 +4,7 @@ import 'package:mimoapp/view/resource/text_style.dart';
 
 class ItemListHorizontal extends StatelessWidget {
   final String? name;
-  final List<Map<String, dynamic>>? data;
+  final List<dynamic>? data;
   const ItemListHorizontal({
     super.key,
     this.name,
@@ -48,8 +48,10 @@ class ItemListHorizontal extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: data!.length < 9 ? data!.length : 9,
             itemBuilder: (BuildContext context, int index) {
-              String image = data?[index]['logo'] ?? '';
-              String name = data?[index]['name'] ?? '';
+              String image = data?[index]['product_images'] ?? '';
+
+              String name = data?[index]['product_name'] ?? '';
+
               String price = data?[index]['price'] ?? '';
               return Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -66,24 +68,19 @@ class ItemListHorizontal extends StatelessWidget {
                     width: Resize.size(context) / 2,
                     child: Column(
                       children: [
-                        Ink(
-                          decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.only(
-                                topLeft: Radius.circular(5),
-                                topRight: Radius.circular(5)),
-                            // boxShadow: const [
-                            //   BoxShadow(
-                            //     blurRadius: 5,
-                            //     color: Colors.blue,
-                            //   )
-                            // ],
-                            image: DecorationImage(
-                              image: NetworkImage(image),
-                              fit: BoxFit.cover,
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8.0),
+                          child: Ink(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              image: DecorationImage(
+                                image: NetworkImage(image),
+                                fit: BoxFit.contain,
+                              ),
                             ),
+                            height: Resize.size(context) / 3.5,
+                            width: Resize.size(context) / 3.5,
                           ),
-                          height: Resize.size(context) / 3.5,
-                          width: Resize.size(context) / 2,
                         ),
                         SizedBox(
                           height: Resize.size(context) * 0.01,

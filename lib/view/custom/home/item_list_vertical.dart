@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:mimoapp/model/home_model.dart';
+import 'package:mimoapp/model/data/product.dart';
 
 import '../../resource/resize.dart';
 import '../../resource/text_style.dart';
 
-class ItemListVertical extends StatelessWidget {
-  final List<Map<String, dynamic>>? data;
+class ItemListVertical extends StatefulWidget {
+  final List<dynamic> data;
   final String? name;
-  const ItemListVertical({super.key, this.data, this.name});
+  const ItemListVertical({super.key, required this.data, this.name});
 
   @override
+  State<ItemListVertical> createState() => _ItemListVerticalState();
+}
+
+class _ItemListVerticalState extends State<ItemListVertical> {
+  @override
   Widget build(BuildContext context) {
-    double itemCount = (data!.length < 5 ? data!.length : 5).toDouble();
+    int itemCount = widget.data.length < 5 ? widget.data.length : 5;
     return Column(
       children: [
         Row(
@@ -19,11 +24,13 @@ class ItemListVertical extends StatelessWidget {
           children: [
             InkWell(
               onTap: () {
-                HomeModel().getHomeData();
+                setState(() {});
+                //getData();
+                print(widget.data[4]['product_name']);
                 // TODO hành động khi ấn vào tiêu đề
               },
               child: Text(
-                name ?? '',
+                widget.name ?? '',
                 style: TextStyleClass().textStyleLarge(context),
                 maxLines: 1,
               ),
@@ -35,12 +42,15 @@ class ItemListVertical extends StatelessWidget {
           child: ListView.builder(
             padding: EdgeInsets.zero,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: itemCount.toInt(),
+            itemCount: itemCount,
             itemBuilder: (BuildContext context, int index) {
-              String image = data?[index]['logo'] ?? '';
-              String name = data?[index]['name'] ?? '';
-              String description = data?[index]['description'] ?? '';
-              String price = data?[index]['price'] ?? '';
+              String image = widget.data[index]['product_images'] ?? '';
+
+              String name = widget.data[index]['product_name'] ?? '';
+            
+              String description =
+                  widget.data[index]['product_description'] ?? '';
+              String price = widget.data[index]['price'] ?? '';
               return InkWell(
                 onTap: () {
                   // TODO hành động khi ấn vào item

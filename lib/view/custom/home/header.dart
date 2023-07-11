@@ -23,7 +23,7 @@ class HeaderHome extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Spacer(),
+          const Spacer(),
           InkWell(
             borderRadius: BorderRadius.circular(5),
             onTap: () {
@@ -32,14 +32,14 @@ class HeaderHome extends StatelessWidget {
             child: Ink(
               height: Resize.size(context) * 0.1,
               width: MediaQuery.of(context).size.width -
-                  Resize.size(context) * 0.01,
+                  Resize.size(context) * 0.03,
               decoration: BoxDecoration(
                 border: Border.all(),
                 borderRadius: BorderRadius.circular(5),
-                boxShadow: const [
+                boxShadow: [
                   BoxShadow(
                     blurRadius: 5,
-                    spreadRadius: 5,
+                    spreadRadius: Resize.size(context) * 0.02,
                     color: Colors.white,
                   )
                 ],
