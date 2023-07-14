@@ -1,6 +1,7 @@
 import 'package:draggable_home/draggable_home.dart';
 import 'package:flutter/material.dart';
 import 'package:mimoapp/data_mau.dart';
+import 'package:mimoapp/model/data/product.dart';
 import 'package:mimoapp/view/custom/home/item_list_vertical.dart';
 import 'package:mimoapp/view/resource/resize.dart';
 
@@ -58,7 +59,7 @@ class ProductTypePage extends StatelessWidget {
         ],
       ),
       body: [
-        ItemListVertical(data: items[0]['datas']),
+        ItemListVertical(data: productData),
       ],
     );
   }
