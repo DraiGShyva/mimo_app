@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 List<dynamic> productData = [];
+List<dynamic> productDataType = [];
 getData() async {
   // lấy dữ liệu  API để hiển thị lên màn hình thông qua biến productData
   var url = Uri.parse('http://173.255.114.207/api/get-product');
@@ -11,6 +12,12 @@ getData() async {
   print(productData.length);
 }
 
+getDataType() async {
+  var url = Uri.parse('http://173.255.114.207/api/get-category');
+  var response = await http.get(url);
+  var data = jsonDecode(response.body);
+  productDataType = data['data'];
+}
 
 
 

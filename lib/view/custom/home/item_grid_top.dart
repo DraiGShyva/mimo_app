@@ -4,7 +4,7 @@ import 'package:mimoapp/view/resource/text_style.dart';
 import '../../resource/resize.dart';
 
 class ItemGridViewTop extends StatelessWidget {
-  final List<Map<String, dynamic>>? data;
+  final List<dynamic>? data;
   const ItemGridViewTop({super.key, this.data});
 
   @override
@@ -26,9 +26,8 @@ class ItemGridViewTop extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           itemCount: data?.length,
           itemBuilder: (BuildContext context, int index) {
-            String image = data?[index]['logo'] ?? '';
-            String name = data?[index]['name'] ?? '';
-            String description = data?[index]['description'] ?? '';
+            String image = data?[index]['category_image'] ?? '';
+            String name = data?[index]['category_name'] ?? '';
             return Padding(
               padding: EdgeInsets.only(
                 left: Resize.size(context) * 0.03,
@@ -36,7 +35,7 @@ class ItemGridViewTop extends StatelessWidget {
               ),
               child: InkWell(
                 onTap: () {
-                  // TODO: Xử lý khi nhấn vào item
+                  Navigator.of(context).pushNamed('/product_type_page');
                 },
                 borderRadius: BorderRadius.circular(20),
                 child: Stack(
@@ -54,20 +53,20 @@ class ItemGridViewTop extends StatelessWidget {
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text(
-                                name,
-                                style:
-                                    TextStyleClass().textStyleMedium(context),
-                              ),
-                              SizedBox(height: Resize.size(context) * 0.01),
-                              Text(description,
+                              SizedBox(
+                                width: Resize.size(context) * 0.2,
+                                child: Text(
+                                  name,
                                   style:
-                                      TextStyleClass().textStyleSmall(context)),
+                                      TextStyleClass().textStyleMedium(context),
+                                  maxLines: 2,
+                                ),
+                              ),
                               SizedBox(height: Resize.size(context) * 0.03),
                             ],
                           ),
                           Expanded(
-                            child: Image.asset(image),
+                            child: Image.network(image),
                           ),
                         ],
                       ),

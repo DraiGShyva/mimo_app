@@ -4,8 +4,8 @@ import 'package:mimoapp/data_mau.dart';
 import 'package:mimoapp/view/custom/home/item_list_vertical.dart';
 import 'package:mimoapp/view/resource/resize.dart';
 
-class ProductTye extends StatelessWidget {
-  const ProductTye({super.key});
+class ProductTypePage extends StatelessWidget {
+  const ProductTypePage({super.key});
 
   @override
   Widget build(BuildContext context) {

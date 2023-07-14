@@ -76,20 +76,25 @@ class _HomePageState extends State<HomePage> {
 
   initializeData() async {
     await getData();
-    setState(() {});
-    print("length ${productData.length}");
+    await getDataType();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(actions: [
+        IconButton(
+          onPressed: () => setState(() {}),
+          icon: Icon(Icons.replay_outlined),
+        )
+      ]),
       body: SingleChildScrollView(
         child: Column(
           children: [
             const HeaderHome(),
             CarouselSliderHome(slides: slide),
             ItemGridViewTop(
-              data: buttonItems,
+              data: productDataType,
             ),
             SizedBox(
               height: Resize.size(context) / 1.5 * items.length,
