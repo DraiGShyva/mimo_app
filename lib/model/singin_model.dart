@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 class SignInModel {
   Future<bool> signIn(String phone, String password) async {
-    final url = Uri.parse('http://173.255.114.207:80/api/get-user');
+    final url = Uri.parse('http://mimo-drink.me:80/api/get-user');
     try {
       final data = {
         'pwd': password,
