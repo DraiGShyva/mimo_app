@@ -1,4 +1,4 @@
-List<Map<String, dynamic>> items = [
+List<dynamic> items = [
   {
     'name': 'Các món gần đây: ',
     'datas': [

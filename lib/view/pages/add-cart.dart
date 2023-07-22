@@ -27,7 +27,8 @@ class _AddCartPageState extends State<AddCartPage> {
     await getData();
     setState(() {});
   }
-void calculateTotalPrice() {
+
+  void calculateTotalPrice() {
     double newTotalPrice = 0;
     for (var item in productData) {
       double price = item['price'];
@@ -38,6 +39,7 @@ void calculateTotalPrice() {
       totalPrice = newTotalPrice;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Material(

@@ -5,7 +5,7 @@ List<dynamic> productData = [];
 List<dynamic> productDataType = [];
 getData() async {
   // lấy dữ liệu  API để hiển thị lên màn hình thông qua biến productData
-  var url = Uri.parse('http://173.255.114.207/api/get-product');
+  var url = Uri.parse('http://mimo-drink.me/api/get-product');
   var response = await http.get(url);
   var data = jsonDecode(response.body);
   productData = data['data'];
@@ -13,7 +13,7 @@ getData() async {
 }
 
 getDataType() async {
-  var url = Uri.parse('http://173.255.114.207/api/get-category');
+  var url = Uri.parse('http://mimo-drink.me/api/get-category');
   var response = await http.get(url);
   var data = jsonDecode(response.body);
   productDataType = data['data'];
@@ -22,7 +22,7 @@ getDataType() async {
 
 
 
-// final url = Uri.parse('http://173.255.114.207/api/get-product');
+// final url = Uri.parse('http://mimo-drink.me/api/get-product');
 //   final respones = await http.get(url);
 //   // lấy dữ liệu từ api và chuyển sang dạng đối tượng lưu vào biến data sau đó gán cho biến productData
 //   final data = json.decode(respones.body);
