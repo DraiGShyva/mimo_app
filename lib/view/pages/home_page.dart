@@ -77,6 +77,7 @@ class _HomePageState extends State<HomePage> {
   initializeData() async {
     await getData();
     await getDataType();
+    setState(() {});
   }
 
   @override
