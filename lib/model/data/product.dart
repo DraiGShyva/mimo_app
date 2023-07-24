@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 List<dynamic> productData = [];
@@ -9,7 +10,9 @@ getData() async {
   var response = await http.get(url);
   var data = jsonDecode(response.body);
   productData = data['data'];
-  print(productData.length);
+  if (kDebugMode) {
+    print(productData.length);
+  }
 }
 
 getDataType() async {

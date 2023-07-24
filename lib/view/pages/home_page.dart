@@ -9,7 +9,6 @@ import 'package:mimoapp/view/custom/home/item_list_vertical.dart';
 import 'package:mimoapp/view/resource/resize.dart';
 
 import '../../data_mau.dart';
-import '../custom/home/item_list_vertical.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -83,12 +82,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(actions: [
-        IconButton(
-          onPressed: () => setState(() {}),
-          icon: Icon(Icons.replay_outlined),
-        )
-      ]),
+      // appBar: AppBar(actions: [
+      //   IconButton(
+      //     onPressed: () => setState(() {}),
+      //     icon: const Icon(Icons.replay_outlined),
+      //   )
+      // ]),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -97,20 +96,9 @@ class _HomePageState extends State<HomePage> {
             ItemGridViewTop(
               data: productDataType,
             ),
-            SizedBox(
-              height: Resize.size(context) / 1.5 * items.length,
-              child: ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: items.length,
-                itemBuilder: (BuildContext context, int index) {
-                  dynamic datas = items[index]['datas'];
-                  String name = items[index]['name'];
-                  return ItemListHorizontal(
-                    name: name,
-                    data: productData,
-                  );
-                },
-              ),
+            ItemListHorizontal(
+              name: 'Tất cả các loại đồ ăn',
+              data: productData,
             ),
             ItemGridViewBottom(
                 name: 'Tất cả các loại đồ ăn', data: productData),

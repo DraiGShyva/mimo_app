@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:mimoapp/view/pages/add_cart.dart';
 import 'package:mimoapp/view/pages/home_page.dart';
-import 'package:mimoapp/view/resource/app_color.dart';
+import 'package:mimoapp/view/pages/signin_page.dart';
+import 'package:mimoapp/view/resource/resize.dart';
+import 'package:mimoapp/view/resource/text_style.dart';
+
+import '../../data_mau.dart';
 
 void main() => runApp(const MaterialApp(home: BottomNavBarPage()));
 
@@ -19,14 +24,12 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
 
   final List<IconData> _icons = [
     Icons.home,
-    Icons.shopping_cart,
     Icons.message,
     Icons.no_meals_rounded,
     Icons.person,
   ];
 
   final List<Color> _iconColors = [
-    AppColor.colorButton,
     Colors.red,
     Colors.green,
     Colors.orange,
@@ -35,8 +38,7 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
 
   final List<dynamic> _pages = [
     const HomePage(),
-    const HomePage(),
-    const HomePage(),
+    const SignInPage(),
     const HomePage(),
     const HomePage(),
   ];
@@ -47,13 +49,13 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
       bottomNavigationBar: CurvedNavigationBar(
         key: _bottomNavigationKey,
         index: 0,
-        height: 60.0,
+        height: Resize.size(context) * 0.15,
         items: _icons.asMap().entries.map((entry) {
           int index = entry.key;
           IconData icon = entry.value;
           return Icon(
             icon,
-            size: 30,
+            size: Resize.size(context) * 0.075,
             color: _page == index ? _iconColors[index] : Colors.grey,
           );
         }).toList(),
@@ -70,6 +72,48 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
         letIndexChange: (index) => true,
       ),
       body: _pages[_page],
+      floatingActionButton: Stack(
+        children: [
+          // xét độ lớn của Floa
+          // icon cart và số lượng được thêm
+          FloatingActionButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const AddCartPage(),
+                ),
+              );
+            },
+            backgroundColor: Colors.red,
+            child: Icon(
+              Icons.shopping_cart,
+              size: Resize.size(context) * 0.08,
+            ),
+          ),
+          Positioned(
+            top: Resize.size(context) * 0.025,
+            right: Resize.size(context) * 0.02,
+            child: Container(
+              width: Resize.size(context) * 0.05,
+              height: Resize.size(context) * 0.05,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(100),
+              ),
+              child: Center(
+                child: Text(
+                  '${items.length}',
+                  style: TextStyleClass(
+                          color: Colors.red, fontWeight: FontWeight.bold)
+                      .textStyleSmall(context),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 }

@@ -1,5 +1,5 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:mimoapp/model/data/product.dart';
 
 import '../../resource/resize.dart';
 import '../../resource/text_style.dart';
@@ -26,7 +26,9 @@ class _ItemListVerticalState extends State<ItemListVertical> {
               onTap: () {
                 setState(() {});
                 //getData();
-                print(widget.data[4]['product_name']);
+                if (kDebugMode) {
+                  print(widget.data[4]['product_name']);
+                }
                 // TODO hành động khi ấn vào tiêu đề
               },
               child: Text(

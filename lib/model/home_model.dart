@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 class HomeModel {
@@ -9,13 +10,18 @@ class HomeModel {
     final data = jsonDecode(respones.body);
     if (respones.statusCode == 200) {
       // lấy dữ liệu từ api
-      print(data['data']['id']);
-      print('ok');
+      if (kDebugMode) {
+        print(data['data']['id']);
+        print('ok');
+      }
+
       return "ok";
 
       ///  return respones.body;
     } else {
-      print('error');
+      if (kDebugMode) {
+        print('error');
+      }
       return "error";
     }
   }

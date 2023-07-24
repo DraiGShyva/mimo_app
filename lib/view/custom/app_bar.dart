@@ -18,7 +18,7 @@ class AppBarCustom extends StatelessWidget {
               },
               icon: const Icon(Icons.arrow_back_ios, color: Colors.white)),
           Text(
-            'Tốt cho sức khỏe',
+            'Trang thanh toán',
             style:
                 TextStyleClass(fontWeight: FontWeight.w500, color: Colors.white)
                     .textStyleLarge(context),

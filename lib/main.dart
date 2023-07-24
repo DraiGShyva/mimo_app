@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mimoapp/view/pages/add-cart.dart';
+import 'package:mimoapp/view/pages/add_cart.dart';
 import 'package:mimoapp/view/pages/begin_page.dart';
 import 'package:mimoapp/view/pages/bottom_nav_bar.dart';
 import 'package:mimoapp/view/pages/product_type_page.dart';
@@ -29,35 +29,31 @@ class MyApp extends StatelessWidget {
           // transitionDuration: const Duration(milliseconds: 400),
         );
 
-    return MaterialApp(
-      title: 'MIMO FOOD & DRINK',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return SafeArea(
+      child: MaterialApp(
+        title: 'MIMO FOOD & DRINK',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const AddCartPage(),
+        onGenerateRoute: (settings) {
+          switch (settings.name) {
+            case '/begin_page':
+              return fadePageRoute(const BeginPage());
+            case '/sign_in_page':
+              return fadePageRoute(const SignInPage());
+            case '/sign_up_page':
+              return fadePageRoute(const SignUpPage());
+            case '/bottom_nav_bar_page':
+              return fadePageRoute(const BottomNavBarPage());
+            case '/product_type_page':
+              return fadePageRoute(const ProductTypePage());
+            default:
+              return null;
+          }
+        },
       ),
-      home: const SafeArea(child: AddCartPage()),
-      // routes: {
-      //   '/plash_time_page': (context) => const PlashTimePage(),
-      //   '/begin_page': (context) => const BeginPage(),
-      //   '/sign_in_page': (context) => const SignInPage(),
-      //   '/sign_up_page': (context) => const SignUpPage(),
-      // },
-      onGenerateRoute: (settings) {
-        switch (settings.name) {
-          case '/begin_page':
-            return fadePageRoute(const BeginPage());
-          case '/sign_in_page':
-            return fadePageRoute(const SignInPage());
-          case '/sign_up_page':
-            return fadePageRoute(const SignUpPage());
-          case '/bottom_nav_bar_page':
-            return fadePageRoute(const BottomNavBarPage());
-          case '/product_type_page':
-            return fadePageRoute(const ProductTypePage());
-          default:
-            return null;
-        }
-      },
     );
   }
 }
