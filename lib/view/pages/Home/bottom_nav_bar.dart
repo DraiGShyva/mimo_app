@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:mimoapp/view/pages/add_cart.dart';
-import 'package:mimoapp/view/pages/home_page.dart';
-import 'package:mimoapp/view/pages/signin_page.dart';
-import 'package:mimoapp/view/resource/resize.dart';
+import 'package:mimoapp/view/pages/cart/add_cart.dart';
+import 'package:mimoapp/view/pages/Home/home_page.dart';
+import 'package:mimoapp/view/pages/Begin_SignIn_SignUp/signin_page.dart';
+import 'package:mimoapp/view/resource/responsive.dart';
 import 'package:mimoapp/view/resource/text_style.dart';
 
-import '../../data_mau.dart';
+import '../../../data_mau.dart';
 
 void main() => runApp(const MaterialApp(home: BottomNavBarPage()));
 
@@ -38,7 +38,7 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
 
   final List<dynamic> _pages = [
     const HomePage(),
-    const SignInPage(),
+    SignInPage(),
     const HomePage(),
     const HomePage(),
   ];
@@ -49,13 +49,13 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
       bottomNavigationBar: CurvedNavigationBar(
         key: _bottomNavigationKey,
         index: 0,
-        height: Resize.size(context) * 0.15,
+        height: Responsive.size(context) * 0.15,
         items: _icons.asMap().entries.map((entry) {
           int index = entry.key;
           IconData icon = entry.value;
           return Icon(
             icon,
-            size: Resize.size(context) * 0.075,
+            size: Responsive.size(context) * 0.075,
             color: _page == index ? _iconColors[index] : Colors.grey,
           );
         }).toList(),
@@ -81,22 +81,22 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const AddCartPage(),
+                  builder: (context) => const AddCart(),
                 ),
               );
             },
             backgroundColor: Colors.red,
             child: Icon(
               Icons.shopping_cart,
-              size: Resize.size(context) * 0.08,
+              size: Responsive.size(context) * 0.08,
             ),
           ),
           Positioned(
-            top: Resize.size(context) * 0.025,
-            right: Resize.size(context) * 0.02,
+            top: Responsive.size(context) * 0.025,
+            right: Responsive.size(context) * 0.02,
             child: Container(
-              width: Resize.size(context) * 0.05,
-              height: Resize.size(context) * 0.05,
+              width: Responsive.size(context) * 0.05,
+              height: Responsive.size(context) * 0.05,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(100),

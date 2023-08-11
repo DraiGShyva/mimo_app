@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mimoapp/view/resource/resize.dart';
+import 'package:mimoapp/view/resource/responsive.dart';
 
 // ignore: must_be_immutable
 class CustomTextFiled extends StatefulWidget {
@@ -40,8 +40,8 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
           keyboardType: widget.keyboardType ?? TextInputType.text,
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(
-              vertical: Resize.size(context) * 0.02,
-              horizontal: Resize.size(context) * 0.02,
+              vertical: Responsive.size(context) * 0.02,
+              horizontal: Responsive.size(context) * 0.02,
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(5),
@@ -57,14 +57,14 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
                     widget.labelText ?? '',
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: Resize.size(context) * 0.03,
+                      fontSize: Responsive.size(context) * 0.03,
                     ),
                   ),
                   Text(
                     '*',
                     style: TextStyle(
                       color: Colors.red,
-                      fontSize: Resize.size(context) * 0.05,
+                      fontSize: Responsive.size(context) * 0.05,
                     ),
                   ),
                 ],
@@ -82,17 +82,17 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
                       widget.hiddenPassword
                           ? Icons.visibility_off
                           : Icons.visibility,
-                      size: Resize.size(context) * 0.06,
+                      size: Responsive.size(context) * 0.06,
                     ),
                   )
                 : null,
             hintStyle: TextStyle(
-              fontSize: Resize.size(context) * 0.03,
+              fontSize: Responsive.size(context) * 0.03,
             ),
           ),
         ),
         SizedBox(
-          height: Resize.size(context) * 0.02,
+          height: Responsive.size(context) * 0.02,
         ),
       ],
     );

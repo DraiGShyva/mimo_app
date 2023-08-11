@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mimoapp/view/resource/text_style.dart';
 
-import '../../resource/resize.dart';
+import '../../resource/responsive.dart';
 
 class ItemGridViewTop extends StatelessWidget {
   final List<dynamic>? data;
@@ -10,10 +10,10 @@ class ItemGridViewTop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: Resize.size(context) / 2,
+      height: Responsive.size(context) / 2,
       padding: EdgeInsets.only(
-        top: Resize.size(context) * 0.03,
-        bottom: Resize.size(context) * 0.03,
+        top: Responsive.size(context) * 0.03,
+        bottom: Responsive.size(context) * 0.03,
       ),
       child: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -30,8 +30,8 @@ class ItemGridViewTop extends StatelessWidget {
             String name = data?[index]['category_name'] ?? '';
             return Padding(
               padding: EdgeInsets.only(
-                left: Resize.size(context) * 0.03,
-                right: Resize.size(context) * 0.03,
+                left: Responsive.size(context) * 0.03,
+                right: Responsive.size(context) * 0.03,
               ),
               child: InkWell(
                 onTap: () {
@@ -44,7 +44,7 @@ class ItemGridViewTop extends StatelessWidget {
                         child: Image.asset(
                             'assets/images/home_image/box2-homepage.png')),
                     Positioned(
-                      left: Resize.size(context) * 0.08,
+                      left: Responsive.size(context) * 0.08,
                       top: 0,
                       right: 0,
                       bottom: 0,
@@ -54,7 +54,7 @@ class ItemGridViewTop extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               SizedBox(
-                                width: Resize.size(context) * 0.2,
+                                width: Responsive.size(context) * 0.2,
                                 child: Text(
                                   name,
                                   style:
@@ -62,7 +62,7 @@ class ItemGridViewTop extends StatelessWidget {
                                   maxLines: 2,
                                 ),
                               ),
-                              SizedBox(height: Resize.size(context) * 0.03),
+                              SizedBox(height: Responsive.size(context) * 0.03),
                             ],
                           ),
                           Expanded(

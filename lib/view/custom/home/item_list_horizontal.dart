@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mimoapp/view/resource/resize.dart';
+import 'package:mimoapp/view/resource/responsive.dart';
 import 'package:mimoapp/view/resource/text_style.dart';
 
 class ItemListHorizontal extends StatelessWidget {
@@ -22,9 +22,9 @@ class ItemListHorizontal extends StatelessWidget {
           },
           child: Padding(
             padding: EdgeInsets.only(
-              left: Resize.size(context) * 0.03,
-              right: Resize.size(context) * 0.03,
-              top: Resize.size(context) * 0.01,
+              left: Responsive.size(context) * 0.03,
+              right: Responsive.size(context) * 0.03,
+              top: Responsive.size(context) * 0.01,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -42,7 +42,7 @@ class ItemListHorizontal extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: Resize.size(context) / 2.1,
+          height: Responsive.size(context) / 2.1,
           width: MediaQuery.of(context).size.width,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
@@ -65,7 +65,7 @@ class ItemListHorizontal extends StatelessWidget {
                           color: const Color.fromARGB(255, 203, 202, 202)),
                       borderRadius: BorderRadius.circular(5),
                     ),
-                    width: Resize.size(context) / 2,
+                    width: Responsive.size(context) / 2,
                     child: Column(
                       children: [
                         Padding(
@@ -78,12 +78,12 @@ class ItemListHorizontal extends StatelessWidget {
                                 fit: BoxFit.contain,
                               ),
                             ),
-                            height: Resize.size(context) / 3.5,
-                            width: Resize.size(context) / 3.5,
+                            height: Responsive.size(context) / 3.5,
+                            width: Responsive.size(context) / 3.5,
                           ),
                         ),
                         SizedBox(
-                          height: Resize.size(context) * 0.01,
+                          height: Responsive.size(context) * 0.01,
                         ),
                         Text(
                           name,
@@ -98,10 +98,10 @@ class ItemListHorizontal extends StatelessWidget {
                               Icon(
                                 Icons.discount_sharp,
                                 color: const Color.fromARGB(141, 181, 19, 7),
-                                size: Resize.size(context) * 0.05,
+                                size: Responsive.size(context) * 0.05,
                               ),
                               SizedBox(
-                                width: Resize.size(context) * 0.01,
+                                width: Responsive.size(context) * 0.01,
                               ),
                               Text(
                                 price,
@@ -117,7 +117,7 @@ class ItemListHorizontal extends StatelessWidget {
                                     TextStyleClass().textStyleMedium(context),
                               ),
                               SizedBox(
-                                width: Resize.size(context) * 0.01,
+                                width: Responsive.size(context) * 0.01,
                               ),
                               const Icon(
                                 Icons.star,
@@ -135,7 +135,7 @@ class ItemListHorizontal extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: Resize.size(context) * 0.07,
+          height: Responsive.size(context) * 0.07,
         ),
       ],
     );

@@ -18,6 +18,8 @@ dependencies:
   carousel_slider: ^4.2.1
   curved_navigation_bar: ^1.0.3
   draggable_home: ^1.0.2
+  pinput: ^3.0.0
+  draggable_bottom_sheet: ^1.0.2
 
 
 dev_dependencies:

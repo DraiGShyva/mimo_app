@@ -1,6 +1,6 @@
 import 'package:mimoapp/view/resource/app_color.dart';
 import 'package:flutter/material.dart';
-import 'package:mimoapp/view/resource/resize.dart';
+import 'package:mimoapp/view/resource/responsive.dart';
 
 class BeginPage extends StatelessWidget {
   static const routeName = '/begin_page';
@@ -14,16 +14,23 @@ class BeginPage extends StatelessWidget {
         color: AppColor.colorApp,
         child: Center(
           child: SingleChildScrollView(
-            primary: true,
-            child: Column(
-              children: [
-                Image.asset(
-                  'assets/images/begin_image/begin-logo.png',
-                  width: Resize.size(context) * 0.7,
-                ),
-                button(context, 'ĐĂNG NHẬP', 1, '/sign_in_page'),
-                button(context, 'ĐĂNG KÍ', 0.7, '/sign_up_page'),
-              ],
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child: sortingMethod(
+                context,
+                [
+                  Image.asset(
+                    'assets/images/begin_image/begin-logo.png',
+                    width: Responsive.size(context) * 0.7,
+                  ),
+                  Column(
+                    children: [
+                      button(context, 'ĐĂNG NHẬP', 1, '/sign_in_page'),
+                      button(context, 'ĐĂNG KÍ', 0.7, '/sign_up_page'),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -31,9 +38,19 @@ class BeginPage extends StatelessWidget {
     );
   }
 
+  sortingMethod(BuildContext context, List<Widget> widget) =>
+      Responsive.vertical(context)
+          ? Column(
+              children: widget,
+            )
+          : Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: widget,
+            );
+
   SizedBox button(
       BuildContext context, String name, double size, String routeName) {
-    size = Resize.size(context) * size;
+    size = Responsive.size(context) * size;
     return SizedBox(
       height: size * 0.2,
       width: size * 0.75,

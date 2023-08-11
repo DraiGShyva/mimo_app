@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mimoapp/view/resource/resize.dart';
+import 'package:mimoapp/view/resource/responsive.dart';
 import 'package:mimoapp/view/resource/text_style.dart';
 
 class AppBarCustom extends StatelessWidget {
@@ -9,7 +9,7 @@ class AppBarCustom extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.blue,
-      height: Resize.size(context) * 0.15,
+      height: Responsive.size(context) * 0.15,
       child: Row(
         children: [
           IconButton(

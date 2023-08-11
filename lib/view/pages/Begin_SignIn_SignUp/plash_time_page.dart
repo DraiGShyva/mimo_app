@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:mimoapp/view/resource/app_color.dart';
 import 'package:flutter/material.dart';
-import 'package:mimoapp/view/resource/resize.dart';
+import 'package:mimoapp/view/resource/responsive.dart';
 
 class PlashTimePage extends StatefulWidget {
   static const routeName = '/plash_time_page';
@@ -35,11 +35,11 @@ class _PlashTimePageState extends State<PlashTimePage> {
             children: [
               Image.asset(
                 'assets/images/plash_image/plash_character.gif',
-                width: Resize.size(context) * 0.7,
+                width: Responsive.size(context) * 0.7,
               ),
               DefaultTextStyle(
                 style: TextStyle(
-                    fontSize: Resize.size(context) * 0.06,
+                    fontSize: Responsive.size(context) * 0.06,
                     color: const Color(0xFF3F3D56),
                     fontWeight: FontWeight.bold,
                     fontFamily: 'Caprasimo'),

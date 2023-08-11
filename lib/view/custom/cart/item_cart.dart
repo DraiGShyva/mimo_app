@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mimoapp/view/resource/resize.dart';
+import 'package:mimoapp/view/resource/responsive.dart';
 import 'package:mimoapp/view/resource/text_style.dart';
 
 class ItemAddCart extends StatefulWidget {
@@ -21,17 +21,17 @@ class _ItemAddCartState extends State<ItemAddCart> {
     String image = widget.data['product_images'] ?? '';
 
     String name = widget.data['product_name'] ?? '';
-    String size = widget.data['product_size'] ?? '';
+    //String size = widget.data['product_size'] ?? '';
     String price = widget.data['price'] ?? '';
 
     return Padding(
       padding: EdgeInsets.only(
-          top: Resize.size(context) * 0.03,
-          left: Resize.size(context) * 0.03,
-          right: Resize.size(context) * 0.03),
+          top: Responsive.size(context) * 0.03,
+          left: Responsive.size(context) * 0.03,
+          right: Responsive.size(context) * 0.03),
       child: Container(
-        padding: EdgeInsets.all(Resize.size(context) * 0.03),
-        height: Resize.size(context) / 3,
+        padding: EdgeInsets.all(Responsive.size(context) * 0.03),
+        height: Responsive.size(context) / 3,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
@@ -46,9 +46,9 @@ class _ItemAddCartState extends State<ItemAddCart> {
         child: Row(
           children: [
             Padding(
-              padding: EdgeInsets.only(right: Resize.size(context) * 0.03),
+              padding: EdgeInsets.only(right: Responsive.size(context) * 0.03),
               child: Ink(
-                width: Resize.size(context) * 0.303,
+                width: Responsive.size(context) * 0.303,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   image: DecorationImage(
@@ -67,7 +67,7 @@ class _ItemAddCartState extends State<ItemAddCart> {
                     style: TextStyleClass(fontWeight: FontWeight.bold)
                         .textStyleMedium(context),
                   ),
-                  SizedBox(height: Resize.size(context) * 0.01),
+                  SizedBox(height: Responsive.size(context) * 0.01),
                   const Text('Size thường'),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

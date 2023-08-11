@@ -1,10 +1,11 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import 'package:mimoapp/model/server_address.dart';
 
 class SignInModel {
   Future<bool> signIn(String phone, String password) async {
-    final url = Uri.parse('http://mimo-drink.me:80/api/get-user');
+    final url = Uri.parse('${serverAddress}get-user');
     try {
       final data = {
         'pwd': password,

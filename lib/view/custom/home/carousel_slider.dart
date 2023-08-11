@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:mimoapp/view/resource/resize.dart';
+import 'package:mimoapp/view/resource/responsive.dart';
 
 class CarouselSliderHome extends StatelessWidget {
   final List<String> slides;
@@ -20,7 +20,7 @@ class CarouselSliderHome extends StatelessWidget {
         );
       },
       options: CarouselOptions(
-        height: Resize.size(context) / 2,
+        height: Responsive.size(context) / 2,
         autoPlay: true,
         autoPlayInterval: const Duration(seconds: 3),
         autoPlayAnimationDuration: const Duration(milliseconds: 800),

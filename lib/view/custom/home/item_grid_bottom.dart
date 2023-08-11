@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mimoapp/view/resource/resize.dart';
+import 'package:mimoapp/view/resource/responsive.dart';
 import 'package:mimoapp/view/resource/text_style.dart';
 
 class ItemGridViewBottom extends StatelessWidget {
@@ -28,7 +28,7 @@ class ItemGridViewBottom extends StatelessWidget {
           ],
         ),
         SizedBox(
-          height: Resize.size(context),
+          height: Responsive.size(context),
           child: GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3, // Số cột trong GridView
@@ -41,18 +41,17 @@ class ItemGridViewBottom extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: itemCount.toInt(),
             itemBuilder: (BuildContext context, int index) {
-               String image = data?[index]['product_images'] ?? '';
+              String image = data?[index]['product_images'] ?? '';
 
               String name = data?[index]['product_name'] ?? '';
-            
-              String description =
-                data?[index]['product_description'] ?? '';
+
+              String description = data?[index]['product_description'] ?? '';
               String price = data?[index]['price'] ?? '';
               return Padding(
                 padding: EdgeInsets.only(
-                  left: Resize.size(context) * 0.03,
-                  right: Resize.size(context) * 0.015,
-                  top: Resize.size(context) * 0.03,
+                  left: Responsive.size(context) * 0.03,
+                  right: Responsive.size(context) * 0.015,
+                  top: Responsive.size(context) * 0.03,
                 ),
                 child: InkWell(
                   onTap: () {
@@ -66,15 +65,15 @@ class ItemGridViewBottom extends StatelessWidget {
                     ),
                     child: Padding(
                       padding: EdgeInsets.all(
-                        Resize.size(context) * 0.02,
+                        Responsive.size(context) * 0.02,
                       ),
                       child: Row(
                         children: [
                           Expanded(
                             child: Padding(
                               padding: EdgeInsets.only(
-                                left: Resize.size(context) * 0.03,
-                                right: Resize.size(context) * 0.03,
+                                left: Responsive.size(context) * 0.03,
+                                right: Responsive.size(context) * 0.03,
                               ),
                               child: Column(
                                 children: [
@@ -108,7 +107,7 @@ class ItemGridViewBottom extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            width: Resize.size(context) / 4,
+                            width: Responsive.size(context) / 4,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               image: DecorationImage(
@@ -127,7 +126,7 @@ class ItemGridViewBottom extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: Resize.size(context) * 0.05,
+          height: Responsive.size(context) * 0.05,
         ),
       ],
     );

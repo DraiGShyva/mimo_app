@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:mimoapp/view/pages/add_cart.dart';
-import 'package:mimoapp/view/pages/begin_page.dart';
-import 'package:mimoapp/view/pages/bottom_nav_bar.dart';
+import 'package:mimoapp/view/pages/Begin_SignIn_SignUp/begin_page.dart';
+import 'package:mimoapp/view/pages/Home/bottom_nav_bar.dart';
+import 'package:mimoapp/view/pages/ForgotPassword/forgot_password.dart';
+import 'package:mimoapp/view/pages/Begin_SignIn_SignUp/plash_time_page.dart';
 import 'package:mimoapp/view/pages/product_type_page.dart';
-import 'package:mimoapp/view/pages/signin_page.dart';
-import 'package:mimoapp/view/pages/signup_page.dart';
+import 'package:mimoapp/view/pages/Begin_SignIn_SignUp/signin_page.dart';
+import 'package:mimoapp/view/pages/Begin_SignIn_SignUp/signup_page.dart';
+import 'package:mimoapp/view/pages/cart/cart.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,21 +38,25 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const AddCartPage(),
+        home: const Cart(),
         onGenerateRoute: (settings) {
           switch (settings.name) {
             case '/begin_page':
               return fadePageRoute(const BeginPage());
             case '/sign_in_page':
-              return fadePageRoute(const SignInPage());
+              return fadePageRoute(SignInPage());
             case '/sign_up_page':
-              return fadePageRoute(const SignUpPage());
+              return fadePageRoute(SignUpPage());
+            case '/forgot_password_page':
+              return fadePageRoute(ForgotPassword());
             case '/bottom_nav_bar_page':
               return fadePageRoute(const BottomNavBarPage());
             case '/product_type_page':
               return fadePageRoute(const ProductTypePage());
+            case '/cart_page':
+              return fadePageRoute(const Cart());
             default:
-              return null;
+              return fadePageRoute(const PlashTimePage());
           }
         },
       ),

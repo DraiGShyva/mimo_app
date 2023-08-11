@@ -560,23 +560,38 @@ List<String> slide = [
 
 List<Map<String, dynamic>> buttonItems = [
   {
-    'logo': 'assets/images/home_image/model-trangchu.png',
-    'name': 'Drink',
-    'description': 'Thức uống',
+    'category_image':
+        'https://uphinh.vn/images/2023/08/11/ddd8da6ccc76bb403a1fd30e4ee592ea.png',
+    'category_name': 'Thức uống',
   },
   {
-    'logo': 'assets/images/home_image/model-trangchu.png',
-    'name': 'Drink',
-    'description': 'Thức uống',
+    'category_image':
+        'https://uphinh.vn/images/2023/08/11/ddd8da6ccc76bb403a1fd30e4ee592ea.png',
+    'category_name': 'Thức uống',
   },
   {
-    'logo': 'assets/images/home_image/model-trangchu.png',
-    'name': 'Drink',
-    'description': 'Thức uống',
+    'category_image':
+        'https://uphinh.vn/images/2023/08/11/ddd8da6ccc76bb403a1fd30e4ee592ea.png',
+    'category_name': 'Thức uống',
   },
   {
-    'logo': 'assets/images/home_image/model-trangchu.png',
-    'name': 'Drink',
-    'description': 'Thức uống',
+    'category_image':
+        'https://uphinh.vn/images/2023/08/11/ddd8da6ccc76bb403a1fd30e4ee592ea.png',
+    'category_name': 'Thức uống',
+  },
+];
+
+List<Map<String, dynamic>> topping = [
+  {
+    'id': 0,
+    'name': 'Trân châu đen',
+  },
+  {
+    'id': 1,
+    'name': 'Trân châu trắng',
+  },
+  {
+    'id': 2,
+    'name': 'Trân châu hoàng kim',
   },
 ];

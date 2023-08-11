@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:mimoapp/view/resource/resize.dart';
+import 'package:mimoapp/view/resource/responsive.dart';
 
 class CustomButton extends StatefulWidget {
-  final String? name;
+  final String name;
   final double size;
-  final String? routeName;
-  final Function? onPressed;
+  final Function onPressed;
   const CustomButton({
     super.key,
-    this.name,
+    required this.name,
     this.size = 1,
-    this.routeName,
-    this.onPressed,
+    required this.onPressed,
   });
 
   @override
@@ -24,7 +22,7 @@ class _CustomButtonState extends State<CustomButton> {
     return Material(
       color: Colors.transparent,
       child: Padding(
-        padding: EdgeInsets.all(Resize.size(context) * widget.size * 0.02),
+        padding: EdgeInsets.all(Responsive.size(context) * widget.size * 0.02),
         child: Ink(
           decoration: BoxDecoration(
             color: const Color.fromARGB(255, 231, 250, 255),
@@ -38,25 +36,19 @@ class _CustomButtonState extends State<CustomButton> {
             ],
           ),
           child: InkWell(
-            onTap: () {
-              if (widget.onPressed != null) {
-                widget.onPressed!();
-                return;
-              }
-              Navigator.pushReplacementNamed(context, widget.routeName!); // 
-            },
+            onTap: widget.onPressed as void Function()?,
             borderRadius: BorderRadius.circular(100),
             child: Padding(
               padding: EdgeInsets.only(
-                left: Resize.size(context) * widget.size * 0.1,
-                right: Resize.size(context) * widget.size * 0.1,
-                top: Resize.size(context) * widget.size * 0.04,
-                bottom: Resize.size(context) * widget.size * 0.04,
+                left: Responsive.size(context) * widget.size * 0.1,
+                right: Responsive.size(context) * widget.size * 0.1,
+                top: Responsive.size(context) * widget.size * 0.04,
+                bottom: Responsive.size(context) * widget.size * 0.04,
               ),
               child: Text(
-                widget.name!,
+                widget.name,
                 style: TextStyle(
-                  fontSize: Resize.size(context) * widget.size * 0.05,
+                  fontSize: Responsive.size(context) * widget.size * 0.05,
                   color: const Color.fromARGB(255, 0, 152, 198),
                   fontWeight: FontWeight.w700,
                 ),

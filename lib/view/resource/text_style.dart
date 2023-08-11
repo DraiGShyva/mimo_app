@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mimoapp/view/resource/resize.dart';
+import 'package:mimoapp/view/resource/responsive.dart';
 
 class TextStyleClass {
   final TextOverflow? overflow;
@@ -14,21 +14,21 @@ class TextStyleClass {
     this.decoration = TextDecoration.none,
   });
   TextStyle textStyleSmall(context) => TextStyle(
-        fontSize: Resize.size(context) * 0.03,
+        fontSize: Responsive.size(context) * 0.03,
         overflow: overflow,
         fontWeight: fontWeight,
         color: color,
         decoration: decoration,
       );
   TextStyle textStyleMedium(context) => TextStyle(
-        fontSize: Resize.size(context) * 0.04,
+        fontSize: Responsive.size(context) * 0.04,
         overflow: overflow,
         fontWeight: fontWeight,
         color: color,
         decoration: decoration,
       );
   TextStyle textStyleLarge(context) => TextStyle(
-        fontSize: Resize.size(context) * 0.05,
+        fontSize: Responsive.size(context) * 0.05,
         overflow: overflow,
         fontWeight: fontWeight,
         color: color,

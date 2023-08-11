@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../../resource/resize.dart';
+import '../../resource/responsive.dart';
 import '../../resource/text_style.dart';
 
 class ItemListVertical extends StatefulWidget {
@@ -40,7 +40,7 @@ class _ItemListVerticalState extends State<ItemListVertical> {
           ],
         ),
         SizedBox(
-          height: Resize.size(context) / 2.7 * itemCount,
+          height: Responsive.size(context) / 2.7 * itemCount,
           child: ListView.builder(
             padding: EdgeInsets.zero,
             physics: const NeverScrollableScrollPhysics(),
@@ -49,7 +49,7 @@ class _ItemListVerticalState extends State<ItemListVertical> {
               String image = widget.data[index]['product_images'] ?? '';
 
               String name = widget.data[index]['product_name'] ?? '';
-            
+
               String description =
                   widget.data[index]['product_description'] ?? '';
               String price = widget.data[index]['price'] ?? '';
@@ -59,9 +59,9 @@ class _ItemListVerticalState extends State<ItemListVertical> {
                 },
                 child: Padding(
                   padding: EdgeInsets.only(
-                    left: Resize.size(context) * 0.03,
-                    right: Resize.size(context) * 0.03,
-                    top: Resize.size(context) * 0.03,
+                    left: Responsive.size(context) * 0.03,
+                    right: Responsive.size(context) * 0.03,
+                    top: Responsive.size(context) * 0.03,
                   ),
                   child: Ink(
                     decoration: const BoxDecoration(
@@ -71,15 +71,15 @@ class _ItemListVerticalState extends State<ItemListVertical> {
                         width: 0.5,
                       ),
                     )),
-                    height: Resize.size(context) / 3,
+                    height: Responsive.size(context) / 3,
                     child: Padding(
                       padding: EdgeInsets.only(
-                        bottom: Resize.size(context) * 0.03,
+                        bottom: Responsive.size(context) * 0.03,
                       ),
                       child: Row(
                         children: [
                           Container(
-                            width: Resize.size(context) / 2.5,
+                            width: Responsive.size(context) / 2.5,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               image: DecorationImage(
@@ -91,8 +91,8 @@ class _ItemListVerticalState extends State<ItemListVertical> {
                           Expanded(
                             child: Padding(
                               padding: EdgeInsets.only(
-                                left: Resize.size(context) * 0.03,
-                                right: Resize.size(context) * 0.03,
+                                left: Responsive.size(context) * 0.03,
+                                right: Responsive.size(context) * 0.03,
                               ),
                               child: Column(
                                 children: [

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mimoapp/view/resource/resize.dart';
+import 'package:mimoapp/view/resource/responsive.dart';
 import 'package:mimoapp/view/resource/text_style.dart';
 
 class HeaderHome extends StatelessWidget {
@@ -8,7 +8,7 @@ class HeaderHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Ink(
-      height: Resize.size(context) * 0.6,
+      height: Responsive.size(context) * 0.6,
       width: MediaQuery.of(context).size.width,
       decoration: const BoxDecoration(
         gradient: LinearGradient(
@@ -30,16 +30,16 @@ class HeaderHome extends StatelessWidget {
               // TODO Xử lý khi ấn nút tìm kiếm
             },
             child: Ink(
-              height: Resize.size(context) * 0.1,
+              height: Responsive.size(context) * 0.1,
               width: MediaQuery.of(context).size.width -
-                  Resize.size(context) * 0.03,
+                  Responsive.size(context) * 0.03,
               decoration: BoxDecoration(
                 border: Border.all(),
                 borderRadius: BorderRadius.circular(5),
                 boxShadow: [
                   BoxShadow(
                     blurRadius: 5,
-                    spreadRadius: Resize.size(context) * 0.02,
+                    spreadRadius: Responsive.size(context) * 0.02,
                     color: Colors.white,
                   )
                 ],
@@ -48,7 +48,7 @@ class HeaderHome extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.search,
-                    size: Resize.size(context) * 0.05,
+                    size: Responsive.size(context) * 0.05,
                   ),
                   Text(
                     'Tìm kiếm...',
@@ -58,7 +58,7 @@ class HeaderHome extends StatelessWidget {
                   IconButton(
                     icon: Icon(
                       Icons.qr_code,
-                      size: Resize.size(context) * 0.05,
+                      size: Responsive.size(context) * 0.05,
                     ),
                     onPressed: () {
                       // TODO Xử lý khi nhấn nút quét mã QR
@@ -67,7 +67,7 @@ class HeaderHome extends StatelessWidget {
                   IconButton(
                     icon: Icon(
                       Icons.camera_alt,
-                      size: Resize.size(context) * 0.05,
+                      size: Responsive.size(context) * 0.05,
                     ),
                     onPressed: () {
                       // TODO Xử lý khi nhấn nút chụp ảnh

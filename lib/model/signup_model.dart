@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import 'package:mimoapp/model/server_address.dart';
 
 class SignUpModel {
   Future<String> signUp(
@@ -8,7 +9,7 @@ class SignUpModel {
     String password,
     String phone,
   ) async {
-    final url = Uri.parse('http://mimo-drink.me:80/api/create-user');
+    final url = Uri.parse('${serverAddress}create-user');
     if (kDebugMode) {
       print(username);
     }
