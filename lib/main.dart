@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mimoapp/view/pages/Begin_SignIn_SignUp/begin_page.dart';
+import 'package:mimoapp/view/pages/auth/begin_page.dart';
 import 'package:mimoapp/view/pages/Home/bottom_nav_bar.dart';
-import 'package:mimoapp/view/pages/ForgotPassword/forgot_password.dart';
-import 'package:mimoapp/view/pages/Begin_SignIn_SignUp/plash_time_page.dart';
+import 'package:mimoapp/view/pages/auth/forgot_password/forgot_password.dart';
+import 'package:mimoapp/view/pages/auth/plash_time_page.dart';
 import 'package:mimoapp/view/pages/product_type_page.dart';
-import 'package:mimoapp/view/pages/Begin_SignIn_SignUp/signin_page.dart';
-import 'package:mimoapp/view/pages/Begin_SignIn_SignUp/signup_page.dart';
+import 'package:mimoapp/view/pages/auth/signin_page.dart';
+import 'package:mimoapp/view/pages/auth/signup_page.dart';
 import 'package:mimoapp/view/pages/cart/cart.dart';
 
 void main() {
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const Cart(),
+        home: const BottomNavBarPage(),
         onGenerateRoute: (settings) {
           switch (settings.name) {
             case '/begin_page':

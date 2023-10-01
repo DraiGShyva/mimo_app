@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mimoapp/view/pages/ForgotPassword/change_password.dart';
+import 'package:mimoapp/view/pages/auth/forgot_password/change_password.dart';
 import 'package:mimoapp/view/resource/responsive.dart';
 import 'package:mimoapp/view/resource/text_style.dart';
 import 'package:pinput/pinput.dart';

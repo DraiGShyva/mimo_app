@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:mimoapp/view/pages/cart/add_cart.dart';
 import 'package:mimoapp/view/pages/Home/home_page.dart';
-import 'package:mimoapp/view/pages/Begin_SignIn_SignUp/signin_page.dart';
+import 'package:mimoapp/view/pages/auth/signin_page.dart';
 import 'package:mimoapp/view/resource/responsive.dart';
 import 'package:mimoapp/view/resource/text_style.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mimoapp/view/custom/SignIn_SignUp/custom_button.dart';
-import 'package:mimoapp/view/custom/SignIn_SignUp/custom_text_field.dart';
-import 'package:mimoapp/view/pages/ForgotPassword/confirm_password.dart';
+import 'package:mimoapp/view/custom/signin_signup/custom_button.dart';
+import 'package:mimoapp/view/custom/signin_signup/custom_text_field.dart';
+import 'package:mimoapp/view/pages/auth/forgot_password/confirm_password.dart';
 import 'package:mimoapp/view/resource/login/text_field_controller.dart';
 import 'package:mimoapp/view/resource/responsive.dart';
 
